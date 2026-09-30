@@ -1,0 +1,147 @@
+.admin-shell {
+  min-height: 100vh;
+  padding: 40px 68px;
+  background: var(--paper);
+  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
+  background-size: 7px 7px;
+}
+
+.admin-header {
+  margin-bottom: 32px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 550;
+}
+
+.admin-header h1 em {
+  color: var(--green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.admin-sub {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.admin-error {
+  padding: 12px;
+  color: var(--coral);
+  font-size: 11px;
+}
+
+.admin-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 60px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.admin-reports {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.report-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgb(33 42 31 / 4%);
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.report-status {
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.report-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.report-status.reviewed {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.report-status.resolved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.report-id {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.report-details {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.report-row {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.report-label {
+  min-width: 90px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.report-details-text {
+  color: var(--ink);
+}
+
+.admin-button {
+  padding: 8px 16px;
+  border: 1px solid;
+  border-radius: 4px;
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.admin-button.resolve:hover {
+  background: #173d2d;
+}
+
+@media (max-width: 480px) {
+  .admin-shell {
+    padding: 24px 16px;
+  }
+
+  .admin-header h1 {
+    font-size: 26px;
+  }
+}
