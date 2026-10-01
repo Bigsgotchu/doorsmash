@@ -11,3 +11,16 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - dependencies
+    # Skip major version leaps (review manually when wanted);
+    # minor + patch updates are still proposed.
+    ignore:
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
