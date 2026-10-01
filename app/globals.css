@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f8f7f1;
-  --paper-deep: #efeee5;
-  --ink: #20231f;
-  --muted: #777a70;
-  --line: #e4e3d9;
-  --green: #234e3d;
-  --green-bright: #d6f05f;
-  --coral: #ef7659;
-  --white: #fffefa;
+  --paper: #f7f7ff;
+  --paper-deep: #ecebfa;
+  --ink: #090b1a;
+  --muted: #62677a;
+  --line: #dfe2f2;
+  --green: #2563ff;
+  --green-bright: #ff4fb3;
+  --coral: #ff1493;
+  --white: #ffffff;
 }
 
 @theme inline {
@@ -58,7 +58,7 @@ summary:focus-visible {
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
   background-color: var(--paper);
-  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
+  background-image: radial-gradient(#cfd5ff 0.55px, transparent 0.55px);
   background-size: 7px 7px;
 }
 
@@ -122,7 +122,7 @@ summary:focus-visible {
   height: 7px;
   flex: none;
   border-radius: 50%;
-  background: #6da17b;
+  background: #4f7cff;
 }
 
 .location-chevron {
@@ -166,12 +166,12 @@ summary:focus-visible {
 }
 
 .nav-link:hover {
-  background: #f2f3e9;
+  background: #eef2ff;
   color: var(--ink);
 }
 
 .nav-link.is-active {
-  background: #eff1e6;
+  background: #e9efff;
   color: var(--green);
   font-weight: 650;
 }
@@ -262,7 +262,7 @@ summary:focus-visible {
   place-items: center;
   flex: none;
   border-radius: 50%;
-  background: #d9e3cc;
+  background: #e2e7ff;
   color: var(--green);
   font-family: Georgia, serif;
   font-size: 17px;
@@ -312,7 +312,7 @@ summary:focus-visible {
 
 .breadcrumb {
   gap: 10px;
-  color: #989a90;
+  color: #81879d;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -330,7 +330,7 @@ summary:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #6f756a;
+  color: #697089;
   font-size: 10px;
 }
 
@@ -399,7 +399,7 @@ h1 em,
   border: 1px solid var(--line);
   border-radius: 3px;
   background: var(--white);
-  color: #64675e;
+  color: #62677a;
   font-size: 10px;
   cursor: pointer;
 }
@@ -582,7 +582,7 @@ h1 em,
 
 .interest-tag {
   padding: 6px 8px;
-  border: 1px solid #e6e7dd;
+  border: 1px solid #dfe2f2;
   border-radius: 2px;
   color: #62675c;
   font-size: 9px;
@@ -640,14 +640,14 @@ h1 em,
 }
 
 .smash-button:hover {
-  background: #173d2d;
+  background: #1b45c7;
   box-shadow: 0 5px 14px rgb(35 78 61 / 19%);
 }
 
 .wave-button {
   padding: 0 12px;
-  border: 1px solid #d8ded0;
-  background: #f3f5eb;
+  border: 1px solid #cbd7ff;
+  background: #eef4ff;
   color: var(--green);
   font-size: 10px;
 }
@@ -718,7 +718,7 @@ h1 em,
 
 .date-card:hover {
   transform: translateX(3px);
-  border-color: #adbba2;
+  border-color: #8ea8ff;
   box-shadow: 0 5px 14px rgb(33 42 31 / 7%);
 }
 
@@ -728,7 +728,7 @@ h1 em,
   display: block;
   flex: none;
   border-radius: 2px;
-  background-color: #d4d3c8;
+  background-color: #d9dded;
   background-position: center;
   background-size: cover;
 }
@@ -784,7 +784,7 @@ h1 em,
   margin-top: 21px;
   padding: 13px 13px 12px;
   border-left: 2px solid var(--green-bright);
-  background: #eef0e5;
+  background: #f2efff;
 }
 
 .note-star {
@@ -838,7 +838,7 @@ h1 em,
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #e9eddd;
+  background: #ffe5f3;
   color: var(--green);
   font-family: Georgia, serif;
   font-size: 23px;
@@ -881,7 +881,7 @@ h1 em,
   height: 220px;
   display: block;
   margin-bottom: 12px;
-  background-color: #d4d3c8;
+  background-color: #d9dded;
   background-position: center;
   background-size: cover;
 }
@@ -927,7 +927,7 @@ h1 em,
   display: block;
   flex: none;
   border-radius: 50%;
-  background-color: #d4d3c8;
+  background-color: #d9dded;
   background-position: center;
   background-size: cover;
 }
@@ -966,7 +966,7 @@ h1 em,
   gap: 8px;
   margin-top: 17px;
   padding: 0 12px;
-  border: 1px solid #cfd9c4;
+  border: 1px solid #cbd7ff;
   border-radius: 3px;
   background: #eff2e9;
   color: var(--green);
@@ -1027,7 +1027,7 @@ h1 em,
   position: relative;
   width: min(100%, 420px);
   padding: 30px;
-  border: 1px solid #e4e3d9;
+  border: 1px solid #dfe2f2;
   border-radius: 5px;
   background: var(--white);
   box-shadow: 0 22px 60px rgb(0 0 0 / 20%);
@@ -1082,7 +1082,7 @@ h1 em,
   place-items: center;
   border: 3px solid var(--white);
   border-radius: 50%;
-  background-color: #d4d3c8;
+  background-color: #d9dded;
   background-position: center;
   background-size: cover;
   color: var(--green);
@@ -1094,7 +1094,7 @@ h1 em,
 .you-photo {
   z-index: 1;
   margin-right: -12px;
-  background: #d9e3cc;
+  background: #e2e7ff;
 }
 
 .duo-heart {
@@ -1171,7 +1171,7 @@ h1 em,
   gap: 11px;
   overflow-y: auto;
   padding: 21px 20px;
-  background: #f8f8f3;
+  background: #f7f7ff;
 }
 
 .chat-day {
@@ -1738,3 +1738,25 @@ h1 em,
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* DoorSmash hot-pink / electric-blue brand layer */
+.app-shell { background-image: radial-gradient(circle at 12% 8%, rgb(255 20 147 / 10%), transparent 28%), radial-gradient(circle at 88% 18%, rgb(37 99 255 / 10%), transparent 30%), radial-gradient(#cfd5ff 0.45px, transparent 0.45px); }
+.sidebar { background: rgb(255 255 255 / 94%); box-shadow: 8px 0 35px rgb(37 99 255 / 5%); }
+.brand-symbol { background: linear-gradient(135deg, #ff1493, #ff4fb3); color: #fff; box-shadow: 0 7px 18px rgb(255 20 147 / 25%); }
+.brand > span:last-child > span, .auth-brand span span, .profile-setup-brand span span { color: #2563ff; }
+.nav-link.is-active { background: linear-gradient(90deg, #eef2ff, #fff0f7); color: #2563ff; }
+.nav-count { background: #ff4fb3; color: #fff; }
+.smash-button { background: linear-gradient(135deg, #ff1493, #ff4fb3); border-color: #ff1493; box-shadow: 0 8px 22px rgb(255 20 147 / 22%); }
+.smash-button:hover { background: linear-gradient(135deg, #e9007f, #ff1493); box-shadow: 0 10px 26px rgb(255 20 147 / 30%); }
+.wave-button, .schedule-inline { background: #eef4ff; color: #2563ff; border-color: #cbd7ff; }
+.date-note { border-left-color: #ff1493; background: linear-gradient(90deg, #fff0f7, #f3f6ff); }
+.date-card:hover { border-color: #8ea8ff; box-shadow: 0 8px 22px rgb(37 99 255 / 10%); }
+.verified-mark { background: #2563ff; color: #fff; }
+.online-pill > span { background: #ff4fb3; }
+.pass-button:hover { border-color: #ffb5d9; color: #ff1493; }
+.chat-compose button { background: linear-gradient(135deg, #2563ff, #4f7cff); }
+.toast-message { background: #090b1a; border-color: #ff4fb3; box-shadow: 0 10px 30px rgb(37 99 255 / 22%); }
+.overlay-backdrop { background: rgb(9 11 26 / 68%); }
+.modal-card { box-shadow: 0 25px 70px rgb(9 11 26 / 30%); }
+.mobile-header, .mobile-nav { background: rgb(255 255 255 / 96%); }
