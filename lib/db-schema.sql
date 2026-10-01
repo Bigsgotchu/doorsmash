@@ -7,26 +7,6 @@
 create extension if not exists "uuid-ossp";
 
 -- ============================================================
--- Trigger: auto-create profile on signup
--- ============================================================
-create function public.handle_new_user()
-returns trigger
-language plpgsql
-security definer
-set search_path = ''
-as $$
-begin
-  insert into public.profiles (id, email, full_name, created_at, updated_at)
-  values (new.id, new.email, new.raw_user_meta_data->>'full_name', now(), now());
-  return new;
-end;
-$$;
-
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function public.handle_new_user();
-
--- ============================================================
 -- Table: profiles
 -- ============================================================
 create table public.profiles (
@@ -47,6 +27,27 @@ create table public.profiles (
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null
 );
+
+-- ============================================================
+-- Trigger: auto-create profile on signup
+-- (Defined after the profiles table it writes to.)
+-- ============================================================
+create function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  insert into public.profiles (id, email, full_name, created_at, updated_at)
+  values (new.id, new.email, new.raw_user_meta_data->>'full_name', now(), now());
+  return new;
+end;
+$$;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute function public.handle_new_user();
 
 -- ============================================================
 -- Table: swipes (one-way likes/passes)
@@ -84,7 +85,7 @@ create table public.conversations (
   id uuid default gen_random_uuid() primary key,
   match_id uuid references public.matches(id) on delete cascade,
   user_a uuid references public.profiles(id) on delete cascade,
-  user_b uuid references public.profiles(id) on delete cascade,
+  user_b uuid references public.profiles(id) on delete cascade not null,
   created_at timestamp with time zone default now() not null,
   unique (user_a, user_b)
 );
@@ -224,6 +225,13 @@ create policy "Match participants can view matches"
   on public.matches for select
   using (auth.uid() = user_a or auth.uid() = user_b);
 
+-- The app creates the match row from the swiper's own session when a mutual
+-- like is detected, so participants need INSERT (not just SELECT).
+create policy "Match participants can create matches"
+  on public.matches for insert
+  to authenticated
+  with check (auth.uid() = user_a or auth.uid() = user_b);
+
 -- conversations
 alter table public.conversations enable row level security;
 
@@ -292,6 +300,25 @@ create policy "Users can read their own notifications"
   on public.notifications for select
   using (auth.uid() = recipient_id);
 
+-- The app writes match/message/date-proposal notifications from the actor's
+-- own session, so users need INSERT for themselves and their match partners.
+create policy "Users can notify themselves and their matches"
+  on public.notifications for insert
+  to authenticated
+  with check (
+    recipient_id = auth.uid()
+    or exists (
+      select 1 from public.matches m
+      where (m.user_a = auth.uid() and m.user_b = recipient_id)
+         or (m.user_b = auth.uid() and m.user_a = recipient_id)
+    )
+    or exists (
+      select 1 from public.conversations c
+      where (c.user_a = auth.uid() and c.user_b = recipient_id)
+         or (c.user_b = auth.uid() and c.user_a = recipient_id)
+    )
+  );
+
 -- reports
 alter table public.reports enable row level security;
 
@@ -323,6 +350,17 @@ alter table public.admin_users enable row level security;
 create policy "Admins only"
   on public.admin_users for all
   using (exists (select 1 from public.admin_users where id = auth.uid()));
+
+-- ============================================================
+-- Realtime publication
+-- The app subscribes to postgres_changes on messages (chat), so the tables
+-- it listens to must be members of the supabase_realtime publication.
+-- Without this, realtime subscriptions silently receive nothing.
+-- ============================================================
+alter publication supabase_realtime add table public.messages;
+alter publication supabase_realtime add table public.conversations;
+alter publication supabase_realtime add table public.matches;
+alter publication supabase_realtime add table public.notifications;
 
 -- ============================================================
 -- Helper function: check if user is admin
