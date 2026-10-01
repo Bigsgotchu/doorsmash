@@ -9,10 +9,12 @@ import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { getBookingAsParty } from "@/lib/plusone/booking-server";
 
 function storagePath(urlOrPath: string): string {
-  // Stored values are bucket-relative paths, but tolerate full URLs.
-  const marker = "/verification-clips/";
-  const idx = urlOrPath.indexOf(marker);
-  return idx >= 0 ? urlOrPath.slice(idx + marker.length) : urlOrPath;
+  const markers = ["/verification-clips/", "verification-clips/"];
+  for (const marker of markers) {
+    const idx = urlOrPath.indexOf(marker);
+    if (idx >= 0) return urlOrPath.slice(idx + marker.length);
+  }
+  return urlOrPath;
 }
 
 export async function GET(
