@@ -28,7 +28,10 @@ function extOf(name: string, fallback: string): string {
 
 export default function VerifyIdentityForm({ next }: { next?: string }) {
   const router = useRouter();
-  const [promptPhrase, setPromptPhrase] = useState<string>(() => randomPromptPhrase());
+  // Deterministic initial phrase: randomPromptPhrase() in the initializer
+  // would differ between SSR and hydration and cause a mismatch.
+  // (Matches the companion application form's pattern.)
+  const [promptPhrase, setPromptPhrase] = useState<string>(PROMPT_PHRASES[0]);
   const [idDoc, setIdDoc] = useState<string | null>(null);
   const [clip, setClip] = useState<string | null>(null);
   const [uploading, setUploading] = useState<string | null>(null);
@@ -236,7 +239,7 @@ export default function VerifyIdentityForm({ next }: { next?: string }) {
           <button
             type="button"
             className="po-link"
-            onClick={() => setPromptPhrase(PROMPT_PHRASES[Math.floor(Math.random() * PROMPT_PHRASES.length)])}
+            onClick={() => setPromptPhrase(randomPromptPhrase())}
           >
             New phrase
           </button>
