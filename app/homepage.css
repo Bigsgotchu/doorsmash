@@ -1,0 +1,272 @@
+/* PlusOne homepage — page-specific styles. Shared po-* primitives come
+   from become-companion.css / bookings.css. */
+
+.po-home {
+  min-height: 100vh;
+  background: #0d0a1a;
+  color: #fff;
+}
+
+/* ---- top nav ---- */
+.po-home-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.po-home-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.po-home-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff2d78, #8b3dff);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.po-home-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.po-home-links a {
+  color: #cfc6e6;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.po-home-links a:hover {
+  color: #fff;
+}
+
+.po-home-links .po-home-cta {
+  color: #fff;
+  border: 1px solid #4a3f6e;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+}
+
+.po-home-links .po-home-cta:hover {
+  border-color: #8b3dff;
+}
+
+/* ---- hero ---- */
+.po-home-hero {
+  text-align: center;
+  padding: 4.5rem 1.25rem 3.5rem;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.po-home-hero h1 {
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 1rem 0 1.25rem;
+  background: linear-gradient(120deg, #fff 30%, #ffb3d4 60%, #c9a6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.po-home-lede {
+  font-size: 1.15rem;
+  color: #cfc6e6;
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.po-home-hero .po-btn-row {
+  justify-content: center;
+}
+
+/* ---- sections ---- */
+.po-home-section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.po-home-section h2 {
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.25rem;
+}
+
+.po-home-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.po-home-see-all {
+  color: #c9a6ff;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.po-home-see-all:hover {
+  color: #fff;
+}
+
+/* ---- how it works ---- */
+.po-home-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.po-home-step {
+  background: #171228;
+  border: 1px solid #2c2350;
+  border-radius: 1rem;
+  padding: 1.5rem 1.25rem;
+}
+
+.po-home-step-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff2d78, #8b3dff);
+  font-weight: 800;
+  margin-bottom: 0.9rem;
+}
+
+.po-home-step h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.po-home-step p {
+  margin: 0;
+  color: #cfc6e6;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+/* ---- featured companions ---- */
+.po-home .po-grid {
+  margin-top: 1.5rem;
+}
+
+.po-home-card-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.po-home-card-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(139, 61, 255, 0.25);
+}
+
+.po-home-card-bio {
+  margin: 0;
+  color: #5b5570;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.po-home-empty {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px dashed #4a3f6e;
+  border-radius: 1rem;
+  color: #cfc6e6;
+}
+
+.po-home-empty p {
+  margin: 0 0 1.25rem;
+}
+
+/* ---- trust strip ---- */
+.po-home-trust {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.po-home-trust-item {
+  border-top: 2px solid #8b3dff;
+  padding-top: 1rem;
+}
+
+.po-home-trust-item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.po-home-trust-item p {
+  margin: 0;
+  color: #cfc6e6;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ---- footer ---- */
+.po-home-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  border-top: 1px solid #2c2350;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  color: #cfc6e6;
+}
+
+.po-home-footer p {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.po-home-footer .po-home-plus {
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .po-home-links a:not(.po-home-cta) {
+    display: none;
+  }
+
+  .po-home-hero {
+    padding-top: 3rem;
+  }
+}

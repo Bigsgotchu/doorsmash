@@ -2,66 +2,6 @@ import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export async function GET(request: Request) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const limit = parseInt(searchParams.get("limit") ?? "10");
-
-  // Fetch current user's profile for preferences
-  const { data: myProfile } = await supabase
-    .from("profiles")
-    .select("distance_preference, gender_preference, blocked_users!inner(blocked_id)")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  const blockedIds: string[] = [];
-  if (myProfile?.blocked_users && Array.isArray(myProfile.blocked_users)) {
-    for (const entry of myProfile.blocked_users) {
-      if (typeof entry === "string" || (entry && typeof entry === "object" && "blocked_id" in entry)) {
-        blockedIds.push(typeof entry === "string" ? entry : entry.blocked_id as string);
-      }
-    }
-  }
-
-  // Build the query
-  let query = supabase
-    .from("profiles")
-    .select("*")
-    .neq("id", user.id)
-    .eq("is_profile_complete", true);
-
-  if (blockedIds.length > 0) {
-    query = query.not("id", "in", `(${blockedIds.join(",")})`);
-  }
-
-  // Exclude profiles the user has already swiped on
-  const { data: swipes } = await supabase
-    .from("swipes")
-    .select("target_id")
-    .eq("swiper_id", user.id);
-
-  const swipedIds = swipes?.map((s) => s.target_id) ?? [];
-  if (swipedIds.length > 0) {
-    query = query.not("id", "in", `(${swipedIds.join(",")})`);
-  }
-
-  const { data: candidates, error } = await query.limit(limit);
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  return NextResponse.json({ data: candidates });
-}
-
 const updateSchema = z.object({
   display_name: z.string().min(1).max(50).optional(),
   age: z.number().min(18).max(100).optional(),

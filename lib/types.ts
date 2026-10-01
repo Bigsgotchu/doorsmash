@@ -17,72 +17,6 @@ export interface Profile {
   updated_at: string;
 }
 
-export interface Swipe {
-  id: number;
-  swiper_id: string;
-  target_id: string;
-  direction: "like" | "pass";
-  created_at: string;
-}
-
-export interface Match {
-  id: string;
-  user_a: string;
-  user_b: string;
-  created_at: string;
-}
-
-export interface Conversation {
-  id: string;
-  match_id?: string;
-  user_a: string;
-  user_b: string;
-  created_at: string;
-}
-
-export interface Message {
-  id: number;
-  conversation_id: string;
-  sender_id: string;
-  content: string;
-  created_at: string;
-}
-
-export interface DateIdea {
-  id: number;
-  title: string;
-  category: string;
-  description?: string;
-  image_url?: string;
-  created_at: string;
-}
-
-export interface DateProposal {
-  id: string;
-  match_id: string;
-  conversation_id: string;
-  proposer_id: string;
-  date_idea_id?: number;
-  custom_title?: string;
-  location_name?: string;
-  proposed_at: string | null;
-  proposed_time: string;
-  note?: string;
-  status: "pending" | "accepted" | "declined";
-  created_at: string;
-}
-
-export interface Notification {
-  id: number;
-  recipient_id: string;
-  type: "match" | "message" | "date_proposal";
-  title: string;
-  body?: string;
-  data?: Record<string, unknown>;
-  read: boolean;
-  created_at: string;
-}
-
 export interface Report {
   id: number;
   reporter_id: string;
@@ -93,33 +27,8 @@ export interface Report {
   created_at: string;
 }
 
-export interface BlockedUser {
-  id: number;
-  blocker_id: string;
-  blocked_id: string;
-  created_at: string;
-}
-
 export const GENDER_OPTIONS = ["man", "woman", "non-binary", "other"] as const;
 export type Gender = (typeof GENDER_OPTIONS)[number];
-
-export const DATE_CATEGORIES = [
-  "DINNER",
-  "WALK",
-  "DRINKS",
-  "COFFEE",
-  "ACTIVITY",
-  "OTHER",
-] as const;
-export type DateCategory = (typeof DATE_CATEGORIES)[number];
-
-export const REPORT_REASONS = [
-  "inappropriate",
-  "spam",
-  "harassment",
-  "other",
-] as const;
-export type ReportReason = (typeof REPORT_REASONS)[number];
 
 // ---------------------------------------------------------------
 // PlusOne marketplace
