@@ -269,7 +269,7 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | App-store rejection / processor bans | V1 is strictly platonic; disciplined public language (3); counsel review before launch. |
 | Trademark collision on the PlusOne name | Clearance search before brand spend; federal registration per attorney (4.2). |
 | Silent production bugs | Error monitoring live at launch; smoke test on cloud before shipping (4.4, 6). |
-| Completion can be marked before event datetime | RLS "Renters can complete own bookings" only checks status=confirmed, not event_date; API allows premature completion. Flag for Phase 2 fix before soft launch. |
+| Completion can be marked before event datetime | Fixed in main (Oct 1) via RLS guard + API datetime check on event_date/start_time; migration 20261001210000 applied to cloud |
 
 
 | Date | Decision | Why |
@@ -283,6 +283,7 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | 2026-10-01 | Secrets live in .env.local only | Two chat exposures; behavior must change |
 | 2026-10-01 | Merge landing-homepage into main; do not release locally | Brand reskin (pink-forward tricolor) merged; CI green Oct 1 |
 | 2026-10-01 | Clip API storagePath handles bucket-prefixed URLs | Stored video_clip_url can include bucket name; fix prevents signed-URL 500s |
+| 2026-10-01 | Guard booking completion until event datetime passes | RLS policy + API check; tested live: future=400, past=200 |
 
 
 # Appendix D — Smoke test results (Phase 1 cloud, Oct 1)
