@@ -2,13 +2,14 @@
   <defs>
     <linearGradient id="poPlusIcon" x1="14" y1="14" x2="50" y2="50" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FF1493"/>
-      <stop offset="0.5" stop-color="#7C3AED"/>
+      <stop offset="0.45" stop-color="#F41D9D"/>
+      <stop offset="0.72" stop-color="#8B2FF7"/>
       <stop offset="1" stop-color="#0066FF"/>
     </linearGradient>
   </defs>
   <rect x="0" y="0" width="64" height="64" rx="15" fill="#0A0A0F"/>
   <g transform="translate(8,8) scale(0.75)" fill="none" stroke="url(#poPlusIcon)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M24 22 L32 16 V50"/>
-    <path d="M18 32 H46"/>
+    <path d="M24 20 L33 14 L33 50 M25 50 H41"/>
+    <path d="M17 31 H49"/>
   </g>
 </svg>

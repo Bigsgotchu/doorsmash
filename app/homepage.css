@@ -178,8 +178,8 @@
 .po-sparkle--d {
   animation-name: po-twinkle-b;
   animation-duration: 2.9s;
-  color: var(--blue);
-  filter: drop-shadow(0 0 6px rgba(0, 102, 255, 0.7));
+  color: var(--lime);
+  filter: drop-shadow(0 0 6px rgba(57, 255, 20, 0.7));
 }
 
 .po-sparkle svg {
@@ -406,12 +406,7 @@
   height: 64px;
   flex-shrink: 0;
   border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    var(--pink-deep),
-    var(--purple-deep),
-    var(--blue)
-  );
+  background: var(--brand-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -633,12 +628,7 @@
 .po-band {
   position: relative;
   overflow: clip;
-  background: linear-gradient(
-    120deg,
-    var(--pink-deep),
-    var(--purple-deep),
-    var(--blue)
-  );
+  background: var(--brand-gradient);
   color: #fff;
   text-align: center;
   padding: clamp(3.5rem, 7vw, 5.5rem) 1.5rem;

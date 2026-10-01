@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 /* PlusOne design tokens — official brand spec (Oct 1, 2026).
-   Hot pink #FF1493, brilliant blue #0066FF, deep black #0A0A0F,
-   white #FFFFFF; purple #7C3AED is the secondary (pink+blue overlap).
-   Dark near-black by default; neutral light theme via prefers-color-scheme. */
+   Hot pink #FF1493 (leads, pink-forward gradients), brilliant blue #0066FF,
+   deep black #0A0A0F, white #FFFFFF; purple is the bridge where pink melts
+   into blue — never separate pink/blue blocks (reads gender-coded).
+   Electric Lime #39FF14 is the sparing accent: verification, availability,
+   success, sparkle hits. Dark near-black by default; neutral light theme
+   via prefers-color-scheme. */
 
 :root {
   --bg: #0a0a0f;
@@ -28,9 +31,9 @@
   --card-shadow:
     0 30px 80px -20px rgba(255, 20, 147, 0.25),
     0 18px 50px -18px rgba(0, 0, 0, 0.7);
-  --brand-gradient: linear-gradient(135deg, #ff1493, #7c3aed, #0066ff);
-  --green: #4ade80;
-  --green-dim: rgba(74, 222, 128, 0.14);
+  --brand-gradient: linear-gradient(135deg, #ff1493, #f41d9d 45%, #8b2ff7 72%, #0066ff);
+  --lime: #39ff14;
+  --lime-dim: rgba(57, 255, 20, 0.12);
   --red: #f87171;
   --red-dim: rgba(248, 113, 113, 0.12);
 }
@@ -54,8 +57,8 @@
     --card-shadow:
       0 30px 80px -24px rgba(255, 20, 147, 0.28),
       0 18px 50px -18px rgba(40, 60, 120, 0.18);
-    --green: #15803d;
-    --green-dim: rgba(21, 128, 61, 0.1);
+    --lime: #0f9d20;
+    --lime-dim: rgba(57, 255, 20, 0.16);
     --red: #b91c1c;
     --red-dim: rgba(185, 28, 28, 0.08);
   }
@@ -198,7 +201,10 @@ a {
   font-size: 1.3rem;
   letter-spacing: 0.04em;
   line-height: 1;
-  color: var(--ink);
+  background: linear-gradient(90deg, #ff1493 0%, #f41d9d 45%, #8b2ff7 72%, #0066ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ---------- Page shell ---------- */
@@ -435,8 +441,8 @@ a {
   gap: 0.3rem;
   font-size: 0.82rem;
   font-weight: 800;
-  color: var(--green);
-  background: var(--green-dim);
+  color: var(--lime);
+  background: var(--lime-dim);
   border: 1px solid currentColor;
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
@@ -640,9 +646,9 @@ a {
 }
 
 .po-success {
-  background: var(--green-dim);
-  border: 1px solid rgba(74, 222, 128, 0.5);
-  color: var(--green);
+  background: var(--lime-dim);
+  border: 1px solid rgba(57, 255, 20, 0.45);
+  color: var(--lime);
   border-radius: 0.75rem;
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
@@ -660,7 +666,7 @@ a {
 }
 
 .po-status-requested { background: rgba(255, 20, 147, 0.14); color: var(--pink-soft); }
-.po-status-confirmed { background: var(--green-dim); color: var(--green); }
+.po-status-confirmed { background: var(--lime-dim); color: var(--lime); }
 .po-status-denied { background: var(--red-dim); color: var(--red); }
 .po-status-cancelled_by_renter,
 .po-status-cancelled_by_companion { background: var(--surface-2); color: var(--ink-dim); }
