@@ -4,7 +4,7 @@
   place-items: center;
   padding: 32px 16px;
   background: var(--paper);
-  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
+  background-image: radial-gradient(#cfd5ff 0.55px, transparent 0.55px);
   background-size: 7px 7px;
 }
 
@@ -104,7 +104,7 @@
   place-items: center;
   border: 2px dashed var(--line);
   border-radius: 50%;
-  background: #f8f8f3;
+  background: #f7f7ff;
   color: var(--muted);
   font-size: 11px;
   text-align: center;
@@ -131,7 +131,7 @@
 }
 
 .photo-button:hover {
-  background: #f2f3e9;
+  background: #eef2ff;
 }
 
 .field-group {
@@ -213,7 +213,7 @@
 }
 
 .auth-submit:hover {
-  background: #173d2d;
+  background: #1b45c7;
   transform: translateY(-1px);
 }
 
@@ -237,3 +237,14 @@
     font-size: 24px;
   }
 }
+
+
+.profile-setup-shell { background: radial-gradient(circle at 15% 15%, rgb(255 20 147 / 18%), transparent 30%), radial-gradient(circle at 85% 80%, rgb(37 99 255 / 18%), transparent 34%), #090b1a; }
+.profile-setup-card { border-color: rgb(255 255 255 / 14%); box-shadow: 0 28px 80px rgb(0 0 0 / 30%); }
+.profile-setup-brand .brand-symbol { background: linear-gradient(135deg, #ff1493, #ff4fb3); color: #fff; }
+.profile-setup-card h1 em { color: #2563ff; }
+.field-group input:focus-visible, .field-group textarea:focus-visible { outline-color: #ff4fb3; }
+.range-value { color: #2563ff; }
+.radio-option:has(input:checked) { border-color: #8ea8ff; background: #eef4ff; }
+.auth-submit { background: linear-gradient(135deg, #ff1493, #2563ff); border-color: transparent; }
+.auth-submit:hover { background: linear-gradient(135deg, #e9007f, #1d4ed8); }
