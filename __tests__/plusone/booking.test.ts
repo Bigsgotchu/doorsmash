@@ -3,6 +3,8 @@ import {
   computeBookingTotals,
   computeCancellation,
   CANCELLATION_CUTOFF_HOURS,
+  denverWallNow,
+  eventHasStarted,
 } from "@/lib/plusone/booking";
 
 describe("computeBookingTotals", () => {
@@ -67,5 +69,47 @@ describe("computeCancellation", () => {
     expect(c.refundCents).toBe(15000);
     expect(c.companionPayoutCents).toBe(0);
     expect(c.companionStrike).toBe(true);
+  });
+});
+
+describe("denverWallNow", () => {
+  it("formats Denver wall time independent of the server timezone", () => {
+    // 2026-10-01T12:00:00Z is 06:00 in Denver (MDT, UTC-6).
+    expect(denverWallNow(new Date("2026-10-01T12:00:00Z"))).toBe("2026-10-01T06:00");
+  });
+
+  it("handles midnight without rolling to hour 24", () => {
+    // 2026-10-01T06:00:00Z is midnight in Denver.
+    expect(denverWallNow(new Date("2026-10-01T06:00:00Z"))).toBe("2026-10-01T00:00");
+  });
+});
+
+describe("eventHasStarted", () => {
+  // Fixed "now": Oct 1 2026, 18:00 Denver time (2026-10-02T00:00:00Z).
+  const now = new Date("2026-10-02T00:00:00Z");
+
+  it("returns false for an event later today", () => {
+    expect(eventHasStarted("2026-10-01", "20:00", now)).toBe(false);
+  });
+
+  it("returns false for an event tomorrow", () => {
+    expect(eventHasStarted("2026-10-02", "19:00", now)).toBe(false);
+  });
+
+  it("returns true for an event earlier today", () => {
+    expect(eventHasStarted("2026-10-01", "17:59", now)).toBe(true);
+  });
+
+  it("returns true at the exact start minute", () => {
+    expect(eventHasStarted("2026-10-01", "18:00", now)).toBe(true);
+  });
+
+  it("returns true for a past event", () => {
+    expect(eventHasStarted("2026-09-20", "19:00", now)).toBe(true);
+  });
+
+  it("accepts DB-style HH:MM:SS start times", () => {
+    expect(eventHasStarted("2026-10-01", "17:00:00", now)).toBe(true);
+    expect(eventHasStarted("2026-10-01", "19:00:00", now)).toBe(false);
   });
 });

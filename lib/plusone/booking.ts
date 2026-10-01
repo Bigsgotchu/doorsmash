@@ -156,6 +156,41 @@ export function bookingStartsAt(eventDate: string, startTime: string): Date {
   return new Date(`${eventDate}T${t}:00`);
 }
 
+/**
+ * Current wall-clock time in America/Denver as "YYYY-MM-DDTHH:MM".
+ * Event times are entered and understood as Denver local (SLC launch),
+ * so guards compare Denver wall time to Denver wall time — never the
+ * server's timezone.
+ */
+export function denverWallNow(now: Date = new Date()): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Denver",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+  const pick = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+  return `${pick("year")}-${pick("month")}-${pick("day")}T${pick("hour")}:${pick("minute")}`;
+}
+
+/**
+ * True once a booking's event has started (America/Denver wall time).
+ * Guards the confirmed → completed transition: a renter cannot complete
+ * a booking for an event that hasn't started yet. `now` is injectable
+ * for tests.
+ */
+export function eventHasStarted(
+  eventDate: string,
+  startTime: string,
+  now: Date = new Date(),
+): boolean {
+  const t = startTime.length >= 5 ? startTime.slice(0, 5) : startTime;
+  return `${eventDate}T${t}` <= denverWallNow(now);
+}
+
 /** Default event end: 4 hours after start, for overlap checks. */
 export function defaultEndTime(startTime: string): string {
   const [h, m] = startTime.split(":").map(Number);
