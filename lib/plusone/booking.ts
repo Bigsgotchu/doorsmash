@@ -151,7 +151,9 @@ export function timeUntil(eventStartsAt: Date, now: Date = new Date()): string {
 
 /** Combine a booking's event_date + start_time into a Date. */
 export function bookingStartsAt(eventDate: string, startTime: string): Date {
-  return new Date(`${eventDate}T${startTime}:00`);
+  // startTime may be "HH:MM" (form) or "HH:MM:SS" (DB); normalise to HH:MM
+  const t = startTime.length >= 5 ? startTime.slice(0, 5) : startTime;
+  return new Date(`${eventDate}T${t}:00`);
 }
 
 /** Default event end: 4 hours after start, for overlap checks. */

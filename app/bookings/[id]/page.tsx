@@ -5,7 +5,7 @@
 
 import { use, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { BOOKING_STATUS_LABELS, timeUntil, type BookingStatus } from "@/lib/plusone/booking";
+import { BOOKING_STATUS_LABELS, timeUntil, bookingStartsAt, type BookingStatus } from "@/lib/plusone/booking";
 import { formatUSD } from "@/lib/plusone/rates";
 import "../../become-companion/become-companion.css";
 import "../bookings.css";
@@ -246,7 +246,7 @@ export default function BookingDetailPage({ params }: { params: Promise<{ id: st
   }
 
   const other = booking.viewerIsRenter ? booking.companion : booking.renter;
-  const eventStart = new Date(`${booking.event_date}T${booking.start_time}:00`);
+  const eventStart = bookingStartsAt(booking.event_date, booking.start_time);
   const active = ["requested", "confirmed"].includes(booking.status);
 
   return (

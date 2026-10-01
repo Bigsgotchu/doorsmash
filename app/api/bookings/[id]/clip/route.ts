@@ -5,7 +5,7 @@
 // GET /api/bookings/[id]/clip?subject=renter|companion
 
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { getBookingAsParty } from "@/lib/plusone/booking-server";
 
 function storagePath(urlOrPath: string): string {
@@ -52,7 +52,11 @@ export async function GET(
   const subjectUserId =
     subject === "renter" ? (party.booking.renter_id as string) : party.companionUserId;
 
-  const { data: submission } = await supabase
+   // Use service-role admin client to read the OTHER side's submission.
+  // RLS on verification_submissions only allows users to see their own;
+  // the booking-party check above already authorized this access.
+  const admin = await createAdminClient();
+  const { data: submission } = await admin
     .from("verification_submissions")
     .select("video_clip_url")
     .eq("user_id", subjectUserId)
