@@ -7,6 +7,7 @@
 .verify-phrase {
   font-weight: 700;
   font-style: italic;
+  color: var(--pink-soft);
 }
 
 .verify-media {
@@ -33,32 +34,32 @@
 .verify-thumb {
   max-width: 220px;
   max-height: 220px;
-  border-radius: 6px;
+  border-radius: 0.75rem;
   object-fit: cover;
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
 }
 
 .verify-video {
   width: 100%;
   max-width: 480px;
-  border-radius: 6px;
+  border-radius: 0.75rem;
   background: #000;
 }
 
 .verify-doc-link {
   font-weight: 700;
-  color: #1d4ed8;
+  color: var(--blue);
 }
 
 .verify-missing {
-  color: var(--coral);
+  color: var(--pink-deep);
   font-weight: 700;
 }
 
 .verify-form {
   display: grid;
   gap: 12px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--hairline);
   padding-top: 16px;
 }
 
@@ -66,9 +67,11 @@
   width: 100%;
   box-sizing: border-box;
   padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font-size: 13px;
+  border: 1px solid var(--hairline);
+  border-radius: 0.75rem;
+  background: var(--input-bg);
+  color: var(--ink);
+  font-size: 0.95rem;
   font-family: inherit;
 }
 
@@ -78,19 +81,21 @@
 }
 
 .verify-approve {
-  background: #166534;
-  border-color: #166534;
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
 }
 
 .verify-approve:hover {
-  background: #14532d;
+  filter: brightness(0.88);
 }
 
 .verify-reject {
-  background: #b91c1c;
-  border-color: #b91c1c;
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
 }
 
 .verify-reject:hover {
-  background: #991b1b;
+  filter: brightness(0.88);
 }

@@ -1,4 +1,5 @@
-/* Public companion profile — PlusOne brand. */
+/* Public companion profile — PlusOne landing-page design language.
+   Shared .po-verified-badge / .po-cta come from globals.css. */
 
 .po-companion-wrap {
   max-width: 42rem;
@@ -23,9 +24,10 @@
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  background: linear-gradient(135deg, #ff2e88, #a855f7);
+  background: var(--brand-gradient);
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.25);
+  border: 3px solid var(--hairline);
+  box-shadow: 0 0 30px var(--glow-blue);
 }
 
 .po-avatar img {
@@ -35,29 +37,17 @@
 }
 
 .po-companion-name {
+  font-family: var(--font-display), "Archivo Black", sans-serif;
   margin: 0 0 0.5rem;
   font-size: 1.9rem;
-  font-weight: 800;
   letter-spacing: -0.02em;
-}
-
-.po-verified-badge {
-  display: inline-block;
-  margin: 0;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.6);
-  color: #86efac;
-  font-weight: 800;
-  font-size: 0.85rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
 }
 
 .po-companion-bio {
   margin: 0;
   font-size: 1.08rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--ink-soft);
 }
 
 .po-companion-interests {
@@ -67,9 +57,9 @@
 }
 
 .po-chip-static {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  color: var(--ink);
   border-radius: 999px;
   padding: 0.55rem 1rem;
   font-size: 0.9rem;
@@ -83,33 +73,34 @@
 
 .po-rate {
   flex: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 1.25rem;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
   text-align: center;
+  box-shadow: var(--card-shadow);
 }
 
 .po-rate-value {
+  font-family: var(--font-display), "Archivo Black", sans-serif;
   font-size: 1.9rem;
   font-weight: 800;
-  color: #ff7ab3;
+  color: var(--pink-soft);
 }
 
 .po-rate-label {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--ink-dim);
 }
 
 .po-companion-section h2 {
   margin: 0 0 1rem;
   font-size: 1.3rem;
-  font-weight: 800;
 }
 
 .po-slots {
@@ -124,14 +115,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 0.9rem;
   padding: 0.85rem 1.1rem;
 }
 
 .po-slots li span {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--ink-dim);
   font-size: 0.92rem;
 }
 
@@ -140,11 +131,4 @@
   display: grid;
   gap: 0.75rem;
   justify-items: center;
-}
-
-.po-companion-cta .po-cta:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
 }

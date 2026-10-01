@@ -1,23 +1,39 @@
 import type { ReactNode } from "react";
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo_Black, Nunito, Poppins } from "next/font/google";
 import { SupabaseProvider } from "@/lib/providers/supabase-provider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const displayFont = Archivo_Black({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist({
-  variable: "--font-geist-mono",
+const bodyFont = Nunito({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800", "900"],
+});
+
+const logoFont = Poppins({
+  variable: "--font-logo",
+  subsets: ["latin"],
+  weight: "600",
 });
 
 export const metadata: Metadata = {
-  title: "PlusOne | Never go alone again.",
+  title: "PlusOne — Never go alone again.",
   description:
-    "Find a verified plus-one for any event — weddings, galas, concerts, and more. Never go alone again.",
+    "PlusOne pairs you with a verified, strictly-platonic event companion for weddings, galas, parties, and reunions. Launching in Salt Lake City — join the waitlist.",
+  icons: {
+    icon: "/brand/plusone-mark.svg",
+    apple: "/brand/plusone-app-icon.svg",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0F",
 };
 
 interface RootLayoutProps {
@@ -28,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${displayFont.variable} ${bodyFont.variable} ${logoFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SupabaseProvider>{children}</SupabaseProvider>
