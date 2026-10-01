@@ -195,6 +195,20 @@ create table public.admin_users (
 -- RLS POLICIES
 -- ============================================================
 
+-- Helper: check if a user is an admin.
+-- Defined BEFORE the policies that use it (CREATE POLICY validates function
+-- references at creation time). SECURITY DEFINER so it bypasses RLS on
+-- admin_users — policies must call this instead of querying admin_users
+-- directly, otherwise the policy recurses into itself infinitely.
+create or replace function public.is_admin(user_id uuid)
+returns boolean
+language sql
+security definer
+set search_path = ''
+as $$
+  select exists (select 1 from public.admin_users where id = user_id);
+$$;
+
 -- profiles
 alter table public.profiles enable row level security;
 
@@ -328,9 +342,7 @@ create policy "Users can create reports"
 
 create policy "Admins can manage reports"
   on public.reports for all
-  using (
-    exists (select 1 from public.admin_users where id = auth.uid())
-  );
+  using (public.is_admin(auth.uid()));
 
 -- blocked_users
 alter table public.blocked_users enable row level security;
@@ -349,7 +361,7 @@ alter table public.admin_users enable row level security;
 
 create policy "Admins only"
   on public.admin_users for all
-  using (exists (select 1 from public.admin_users where id = auth.uid()));
+  using (public.is_admin(auth.uid()));
 
 -- ============================================================
 -- Realtime publication
@@ -361,18 +373,6 @@ alter publication supabase_realtime add table public.messages;
 alter publication supabase_realtime add table public.conversations;
 alter publication supabase_realtime add table public.matches;
 alter publication supabase_realtime add table public.notifications;
-
--- ============================================================
--- Helper function: check if user is admin
--- ============================================================
-create or replace function public.is_admin(user_id uuid)
-returns boolean
-language sql
-security definer
-set search_path = ''
-as $$
-  select exists (select 1 from public.admin_users where id = user_id);
-$$;
 
 -- ============================================================
 -- Storage bucket policies
