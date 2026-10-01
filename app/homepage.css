@@ -37,7 +37,8 @@
 
 .po-lp-hero::before {
   left: -160px;
-  background: var(--purple-deep);
+  background: var(--blue);
+  opacity: 0.34;
 }
 
 .po-lp-hero::after {
@@ -45,7 +46,7 @@
   width: 620px;
   height: 620px;
   background: var(--pink-deep);
-  opacity: 0.38;
+  opacity: 0.5;
 }
 
 .po-lp-hero > * {
@@ -86,6 +87,13 @@
 
 .po-lp-h1 .po-pink {
   color: var(--pink);
+  text-shadow: 0 0 22px rgba(255, 20, 147, 0.55), 0 0 64px rgba(255, 20, 147, 0.3);
+}
+
+/* Neon accent words elsewhere inherit the same luminous treatment. */
+.po-section-head h2 .po-pink,
+.po-duo-copy h2 .po-pink {
+  text-shadow: 0 0 18px rgba(255, 20, 147, 0.45);
 }
 
 .po-lp-sub {
@@ -245,9 +253,13 @@
   opacity: 0.9;
 }
 
-/* Three steps, three brand colors. */
+/* Three steps, three brand colors — each with its own neon glow. */
 .po-step-num--b { color: var(--lime); }
 .po-step-num--c { color: var(--blue); }
+
+.po-step-num { text-shadow: 0 0 26px rgba(255, 20, 147, 0.4); }
+.po-step-num--b { text-shadow: 0 0 26px rgba(57, 255, 20, 0.45); }
+.po-step-num--c { text-shadow: 0 0 26px rgba(0, 102, 255, 0.45); }
 
 .po-step-card h3 {
   font-family: var(--font-display), "Archivo Black", sans-serif;
@@ -818,4 +830,18 @@
 .po-lp-footer .po-fine {
   text-align: left;
   width: 100%;
+}
+
+/* Light theme: keep the neon soft — luminosity lives on dark. */
+@media (prefers-color-scheme: light) {
+  .po-lp-h1 .po-pink,
+  .po-section-head h2 .po-pink,
+  .po-duo-copy h2 .po-pink {
+    text-shadow: 0 0 14px rgba(255, 20, 147, 0.25);
+  }
+  .po-step-num { text-shadow: 0 0 16px rgba(255, 20, 147, 0.22); }
+  .po-step-num--b { text-shadow: 0 0 16px rgba(15, 157, 32, 0.25); }
+  .po-step-num--c { text-shadow: 0 0 16px rgba(0, 102, 255, 0.25); }
+  .po-lp-hero::before { opacity: 0.22; }
+  .po-lp-hero::after { opacity: 0.3; }
 }

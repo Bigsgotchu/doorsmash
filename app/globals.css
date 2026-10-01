@@ -66,6 +66,15 @@
     --red: #b91c1c;
     --red-dim: rgba(185, 28, 28, 0.08);
   }
+
+  /* Light theme: softer neon. */
+  .po-btn,
+  .po-cta {
+    box-shadow: 0 8px 24px rgba(255, 20, 147, 0.28);
+  }
+  .po-eyebrow {
+    text-shadow: 0 0 10px rgba(15, 157, 32, 0.25);
+  }
 }
 
 @theme inline {
@@ -236,6 +245,7 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--lime);
+  text-shadow: 0 0 16px rgba(57, 255, 20, 0.5);
   margin: 0 0 1rem;
 }
 
@@ -294,7 +304,7 @@ a {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 8px 30px var(--glow-pink);
+  box-shadow: 0 8px 30px var(--glow-pink), 0 0 46px rgba(255, 20, 147, 0.32), 0 0 90px rgba(139, 47, 247, 0.18);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
