@@ -29,7 +29,7 @@ const signupSchema = z.object({
 });
 
 type FormState =
-  | { errors?: { email?: string[]; password?: string[] }; message?: string }
+  | { errors?: { email?: string[]; password?: string[] }; message?: string; success?: boolean }
   | undefined;
 
 export async function login(state: FormState, formData: FormData) {
@@ -57,7 +57,7 @@ export async function login(state: FormState, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  return { success: true };
 }
 
 export async function signup(state: FormState, formData: FormData) {

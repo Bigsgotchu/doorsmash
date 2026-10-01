@@ -1,12 +1,20 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { login, signup } from "@/lib/actions/auth";
 import Link from "next/link";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [loginState, loginAction, loginPending] = useActionState(login, undefined);
   const [signupState, signupAction, signupPending] = useActionState(signup, undefined);
+
+  useEffect(() => {
+    if (loginState?.success) {
+      router.push("/");
+    }
+  }, [loginState?.success, router]);
 
   return (
     <main className="auth-shell">
