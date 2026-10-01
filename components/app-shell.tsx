@@ -316,7 +316,7 @@ export default function AppShell({
     is_profile_complete: false,
     created_at: "",
     updated_at: "",
-    primary_photo_url: "https://via.placeholder.com/400x600?text=Loading",
+    primary_photo_url: null,
   };
 
   const profilePhoto = displayProfile.primary_photo_url || "/window.svg";
