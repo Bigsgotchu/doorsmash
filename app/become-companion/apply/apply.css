@@ -1,3 +1,8 @@
+/* Companion application flow — PlusOne landing-page design language.
+   Page-specific classes only. Shared .po-card / .po-form / .po-field /
+   .po-chips / .po-chip / .po-btn-secondary / .po-link / .po-hint /
+   .po-cta come from globals.css. */
+
 .po-apply-wrap {
   max-width: 42rem;
   margin: 0 auto;
@@ -5,15 +10,10 @@
 }
 
 .po-apply-title {
+  font-family: var(--font-display), "Archivo Black", sans-serif;
   font-size: clamp(1.8rem, 6vw, 2.6rem);
-  font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 2rem;
-}
-
-.po-form {
-  display: grid;
-  gap: 1.5rem;
 }
 
 .po-progress {
@@ -31,7 +31,7 @@
   align-items: center;
   gap: 0.35rem;
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--ink-dim);
   text-align: center;
 }
 
@@ -44,27 +44,28 @@
   justify-content: center;
   font-weight: 800;
   font-size: 0.8rem;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--surface-2);
+  color: var(--ink-dim);
 }
 
 .po-progress li.active {
-  color: #fff;
+  color: var(--ink);
 }
 
 .po-progress li.active .po-progress-dot {
-  background: linear-gradient(135deg, #ff2e88, #a855f7);
+  background: var(--brand-gradient);
   color: #fff;
+  box-shadow: 0 0 18px var(--glow-purple);
 }
 
 .po-progress li.done .po-progress-dot {
-  background: #22c55e;
+  background: var(--blue);
   color: #fff;
 }
 
 .po-errors {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.5);
+  background: var(--red-dim);
+  border: 1px solid rgba(248, 113, 113, 0.5);
   border-radius: 1rem;
   padding: 1rem 1.25rem;
 }
@@ -72,48 +73,29 @@
 .po-errors p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
-  color: #fca5a5;
+  color: var(--red);
 }
 
-.po-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  padding: 1.75rem;
-  display: grid;
-  gap: 1.25rem;
-}
-
+/* Page-specific refinement of the shared .po-card (step panels). */
 .po-card h2 {
   margin: 0;
   font-size: 1.4rem;
-  font-weight: 800;
 }
 
-.po-hint {
-  margin: 0;
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.55;
-}
-
-.po-field {
-  display: grid;
-  gap: 0.6rem;
-}
-
+/* Page-specific field refinements on top of the shared .po-field. */
 .po-field > span:first-child {
   font-weight: 700;
   font-size: 0.95rem;
+  color: var(--ink);
 }
 
 .po-field textarea,
 .po-field input[type="number"] {
   width: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--input-bg);
+  border: 1px solid var(--hairline);
   border-radius: 0.9rem;
-  color: #fff;
+  color: var(--ink);
   padding: 0.9rem 1rem;
   font-size: 1rem;
   font-family: inherit;
@@ -123,37 +105,14 @@
 .po-field textarea:focus,
 .po-field input[type="number"]:focus {
   outline: none;
-  border-color: #ff2e88;
-  box-shadow: 0 0 0 3px rgba(255, 46, 136, 0.25);
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px var(--glow-pink);
 }
 
 .po-count {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--ink-dim);
   text-align: right;
-}
-
-.po-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.po-chip {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  border-radius: 999px;
-  padding: 0.55rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.po-chip.on {
-  background: linear-gradient(135deg, #ff2e88, #a855f7);
-  border-color: transparent;
 }
 
 .po-rates {
@@ -170,22 +129,23 @@
 .po-payout {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #ff7ab3;
+  color: var(--pink-soft);
 }
 
 .po-upload {
   display: block;
-  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border: 2px dashed var(--hairline);
   border-radius: 1rem;
   padding: 1.75rem 1rem;
   text-align: center;
   cursor: pointer;
   font-weight: 700;
+  color: var(--ink);
   transition: border-color 0.15s ease;
 }
 
 .po-upload:hover {
-  border-color: #ff2e88;
+  border-color: var(--pink);
 }
 
 .po-upload-done {
@@ -208,16 +168,6 @@
   background: #000;
 }
 
-.po-link {
-  background: none;
-  border: none;
-  color: #ff7ab3;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0;
-  font-size: 0.9rem;
-}
-
 .po-phrase {
   background: rgba(168, 85, 247, 0.14);
   border: 1px solid rgba(168, 85, 247, 0.45);
@@ -231,31 +181,22 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--ink-dim);
 }
 
 .po-phrase-text {
+  font-family: var(--font-display), "Archivo Black", sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
 }
 
 .po-timer {
   font-weight: 800;
-  color: #ff7ab3;
+  color: var(--pink-soft);
   margin: 0.75rem 0;
 }
 
-.po-btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  border-radius: 999px;
-  padding: 0.85rem 1.75rem;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
+/* Disabled-state refinement for the shared .po-btn-secondary. */
 .po-btn-secondary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -268,6 +209,7 @@
   margin-top: 0.75rem;
 }
 
+/* Small size variant of the shared .po-cta. */
 .po-cta-sm {
   font-size: 1rem;
   padding: 0.85rem 1.75rem;
@@ -289,7 +231,7 @@
 .po-review > div {
   display: grid;
   gap: 0.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--hairline);
   padding-bottom: 1rem;
 }
 
@@ -297,12 +239,13 @@
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--ink-dim);
 }
 
 .po-review dd {
   margin: 0;
   line-height: 1.6;
+  color: var(--ink);
 }
 
 .po-nav {

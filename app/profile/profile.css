@@ -1,64 +1,52 @@
+/* Profile setup — PlusOne landing-page design language.
+   Shared .field-group / .auth-submit come from globals.css. */
+
 .profile-setup-shell {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 32px 16px;
-  background: var(--paper);
-  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
-  background-size: 7px 7px;
+  background:
+    radial-gradient(50rem 26rem at 85% -5%, var(--glow-purple), transparent 60%),
+    radial-gradient(45rem 24rem at 10% 0%, var(--glow-pink), transparent 60%),
+    var(--bg);
 }
 
 .profile-setup-card {
   width: 100%;
   max-width: 460px;
   padding: 48px 36px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: 0 24px 60px rgb(33 42 31 / 12%);
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: var(--card-shadow);
 }
 
+/* Centers the shared Brand lockup (JSX renders the Brand component here). */
 .profile-setup-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 28px;
-  color: var(--ink);
-  font-size: 21px;
-  font-weight: 750;
-  text-decoration: none;
-}
-
-.profile-setup-brand .po-home-plus {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  width: 31px;
-  height: 31px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ff2d78, #8b3dff);
-  font-size: 1.25rem;
-  font-weight: 800;
-  line-height: 1;
+  margin-bottom: 28px;
 }
 
 .profile-setup-card h1 {
   margin: 0 0 8px;
-  font-size: 28px;
-  font-weight: 550;
+  font-size: 1.75rem;
   line-height: 1.1;
 }
 
 .profile-setup-card h1 em {
-  color: var(--green);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  font-style: normal;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .profile-setup-sub {
   margin: 0 0 24px;
-  color: var(--muted);
-  font-size: 12px;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -70,11 +58,11 @@
 
 .form-error {
   padding: 10px 12px;
-  border: 1px solid var(--coral);
-  border-radius: 4px;
-  color: var(--coral);
-  font-size: 11px;
-  font-weight: 500;
+  border: 1px solid var(--pink-deep);
+  border-radius: 0.75rem;
+  color: var(--pink-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .photo-upload {
@@ -89,7 +77,7 @@
   height: 110px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
 }
 
 .photo-placeholder {
@@ -97,11 +85,11 @@
   height: 110px;
   display: grid;
   place-items: center;
-  border: 2px dashed var(--line);
+  border: 2px dashed var(--hairline);
   border-radius: 50%;
-  background: #f8f8f3;
-  color: var(--muted);
-  font-size: 11px;
+  background: var(--surface-2);
+  color: var(--ink-dim);
+  font-size: 0.8rem;
   text-align: center;
   cursor: pointer;
 }
@@ -116,59 +104,24 @@
 
 .photo-button {
   padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--surface);
   color: var(--ink);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .photo-button:hover {
-  background: #f2f3e9;
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field-group label {
-  color: var(--ink);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.field-group input,
-.field-group textarea {
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
-  color: var(--ink);
-  font-size: 13px;
-  font-family: inherit;
-}
-
-.field-group textarea {
-  resize: vertical;
-  min-height: 70px;
-}
-
-.field-group input:focus-visible,
-.field-group textarea:focus-visible {
-  outline: 2px solid var(--green-bright);
-  outline-offset: 2px;
+  background: var(--surface-2);
 }
 
 .range-value {
   align-self: flex-end;
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 650;
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .radio-group {
@@ -182,40 +135,19 @@
   align-items: center;
   gap: 6px;
   padding: 7px 11px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
-  font-size: 11px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .radio-option input {
   margin: 0;
   cursor: pointer;
-}
-
-.auth-submit {
-  margin-top: 8px;
-  padding: 13px 4px;
-  border: 1px solid var(--green);
-  border-radius: 4px;
-  background: var(--green);
-  color: white;
-  font-size: 12px;
-  font-weight: 650;
-  cursor: pointer;
-  transition: background 160ms ease, transform 160ms ease;
-}
-
-.auth-submit:hover {
-  background: #173d2d;
-  transform: translateY(-1px);
-}
-
-.auth-submit:disabled {
-  opacity: 0.45;
-  cursor: default;
-  transform: none;
+  accent-color: var(--pink);
 }
 
 @media (max-width: 480px) {
@@ -224,11 +156,7 @@
     padding: 32px 22px;
   }
 
-  .profile-setup-brand {
-    font-size: 19px;
-  }
-
   .profile-setup-card h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }

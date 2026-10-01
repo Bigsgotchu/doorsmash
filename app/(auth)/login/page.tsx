@@ -4,6 +4,7 @@ import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { login, signup } from "@/lib/actions/auth";
 import Link from "next/link";
+import { Brand } from "@/app/_components/brand";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function LoginPage() {
     <main className="auth-shell">
       <div className="auth-card">
         <div className="auth-brand">
-          <span className="po-home-plus" aria-hidden="true">+</span> plusone
+          <Brand href={null} />
         </div>
         <h1>Welcome back.</h1>
 

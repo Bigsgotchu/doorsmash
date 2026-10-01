@@ -1,64 +1,52 @@
+/* Login — PlusOne landing-page design language.
+   Shared .field-group / .field-error / .auth-submit come from globals.css. */
+
 .auth-shell {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 32px 16px;
-  background: var(--paper);
-  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
-  background-size: 7px 7px;
+  background:
+    radial-gradient(50rem 26rem at 85% -5%, var(--glow-purple), transparent 60%),
+    radial-gradient(45rem 24rem at 10% 0%, var(--glow-pink), transparent 60%),
+    var(--bg);
 }
 
 .auth-card {
   width: 100%;
   max-width: 380px;
   padding: 48px 36px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: 0 24px 60px rgb(33 42 31 / 12%);
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: var(--card-shadow);
 }
 
+/* Centers the shared Brand lockup (JSX renders the Brand component here). */
 .auth-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 28px;
-  color: var(--ink);
-  font-size: 21px;
-  font-weight: 750;
-  text-decoration: none;
-}
-
-.auth-brand .po-home-plus {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  width: 31px;
-  height: 31px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ff2d78, #8b3dff);
-  font-size: 1.25rem;
-  font-weight: 800;
-  line-height: 1;
+  margin-bottom: 28px;
 }
 
 .auth-card h1 {
   margin: 0 0 22px;
-  font-size: 28px;
-  font-weight: 550;
+  font-size: 1.75rem;
   line-height: 1.1;
 }
 
 .auth-card h1 em {
-  color: var(--green);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  font-style: normal;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .auth-tabs {
   display: flex;
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .auth-tabs .tab {
@@ -67,116 +55,62 @@
   border: 0;
   border-radius: 3px 3px 0 0;
   background: transparent;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 650;
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: color 160ms ease, border-color 160ms ease;
 }
 
 .auth-tabs .tab.active {
   color: var(--ink);
-  border-bottom: 2px solid var(--green);
+  border-bottom: 2px solid var(--pink);
 }
 
 .auth-sub {
   margin: 0 0 20px;
-  color: var(--muted);
-  font-size: 12px;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
 .auth-error {
   margin: 0 0 16px;
-  color: var(--coral);
-  font-size: 11px;
-  font-weight: 500;
+  color: var(--pink-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .auth-success {
   margin: 0 0 16px;
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.field-group label {
-  color: var(--ink);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.field-group input {
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
-  color: var(--ink);
-  font-size: 13px;
-}
-
-.field-group input:focus-visible {
-  outline: 2px solid var(--green-bright);
-  outline-offset: 2px;
-}
-
-.field-error {
-  margin: -8px 0 12px;
-  color: var(--coral);
-  font-size: 10px;
-  font-weight: 500;
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .hint {
   margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 10px;
+  color: var(--ink-dim);
+  font-size: 0.82rem;
   line-height: 1.4;
-}
-
-.auth-submit {
-  width: 100%;
-  padding: 13px 4px;
-  border: 1px solid var(--green);
-  border-radius: 4px;
-  background: var(--green);
-  color: white;
-  font-size: 12px;
-  font-weight: 650;
-  cursor: pointer;
-  transition: background 160ms ease, transform 160ms ease;
-}
-
-.auth-submit:hover {
-  background: #173d2d;
-  transform: translateY(-1px);
-}
-
-.auth-submit:disabled {
-  opacity: 0.5;
-  cursor: default;
-  transform: none;
 }
 
 .auth-divider {
   margin: 24px 0;
   text-align: center;
-  color: var(--muted);
-  font-size: 11px;
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .auth-divider span {
   display: inline-block;
   padding: 0 14px;
-  background: var(--white);
+  background: var(--surface);
 }
 
 .auth-divider::before,
@@ -186,7 +120,7 @@
   width: 38%;
   height: 1px;
   vertical-align: middle;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--hairline);
 }
 
 .auth-divider::before { margin-right: -4px; }
@@ -198,17 +132,17 @@
 
 .auth-footer {
   margin-top: 20px;
-  color: var(--muted);
-  font-size: 10px;
+  color: var(--ink-dim);
+  font-size: 0.82rem;
   line-height: 1.5;
 }
 
 .auth-link {
   display: inline-block;
   margin-top: 4px;
-  color: var(--green);
-  font-size: 10px;
-  font-weight: 600;
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -222,11 +156,7 @@
     padding: 36px 24px;
   }
 
-  .auth-brand {
-    font-size: 19px;
-  }
-
   .auth-card h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }

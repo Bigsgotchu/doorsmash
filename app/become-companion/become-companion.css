@@ -1,92 +1,11 @@
-/* PlusOne brand: hot pink primary, electric purple accents,
-   deep navy backgrounds, bold white text. Mobile-first. */
-
-.po-shell {
-  --po-pink: #ff2e88;
-  --po-pink-soft: #ff7ab3;
-  --po-purple: #a855f7;
-  --po-navy: #0d0621;
-  --po-navy-2: #171032;
-  --po-white: #ffffff;
-  --po-muted: rgba(255, 255, 255, 0.72);
-  --po-card: rgba(255, 255, 255, 0.06);
-
-  min-height: 100dvh;
-  background:
-    radial-gradient(60rem 30rem at 85% -5%, rgba(168, 85, 247, 0.28), transparent 60%),
-    radial-gradient(50rem 26rem at 10% 0%, rgba(255, 46, 136, 0.22), transparent 60%),
-    var(--po-navy);
-  color: var(--po-white);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-}
+/* Become a companion — PlusOne landing-page design language.
+   Page-specific classes only. Shared .po-shell / .po-eyebrow / .po-title /
+   .po-sub / .po-cta / .po-fine / .po-section / .po-h2 come from globals.css. */
 
 .po-hero {
   max-width: 42rem;
   margin: 0 auto;
   padding: 4.5rem 1.25rem 3rem;
-  text-align: center;
-}
-
-.po-eyebrow {
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--po-pink-soft);
-  margin-bottom: 1rem;
-}
-
-.po-title {
-  font-size: clamp(2.4rem, 8vw, 4rem);
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 0 0 1.25rem;
-}
-
-.po-sub {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--po-muted);
-  margin: 0 0 2rem;
-}
-
-.po-cta {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--po-pink), #ff5c3a);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.1rem;
-  padding: 1rem 2.25rem;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 8px 30px rgba(255, 46, 136, 0.45);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.po-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(255, 46, 136, 0.55);
-}
-
-.po-fine {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--po-muted);
-}
-
-.po-section {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
-}
-
-.po-h2 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  margin: 0 0 1.5rem;
   text-align: center;
 }
 
@@ -99,10 +18,11 @@
 }
 
 .po-step {
-  background: var(--po-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 1.25rem;
   padding: 1.5rem;
+  box-shadow: var(--card-shadow);
 }
 
 .po-step-num {
@@ -112,7 +32,8 @@
   width: 2rem;
   height: 2rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--po-pink), var(--po-purple));
+  background: var(--brand-gradient);
+  color: #fff;
   font-weight: 800;
   margin-bottom: 0.75rem;
 }
@@ -124,7 +45,7 @@
 
 .po-step p {
   margin: 0;
-  color: var(--po-muted);
+  color: var(--ink-dim);
   line-height: 1.6;
 }
 
@@ -140,44 +61,46 @@
 }
 
 .po-money-card {
-  background: var(--po-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 1.25rem;
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  box-shadow: var(--card-shadow);
 }
 
 .po-money-you {
-  border-color: var(--po-pink);
-  box-shadow: 0 0 24px rgba(255, 46, 136, 0.25);
+  border-color: var(--pink);
+  box-shadow: 0 0 24px var(--glow-pink);
 }
 
 .po-money-label {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--po-muted);
+  color: var(--ink-dim);
 }
 
 .po-money-value {
+  font-family: var(--font-display), "Archivo Black", sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
 }
 
 .po-money-you .po-money-value {
-  color: var(--po-pink-soft);
+  color: var(--pink-soft);
 }
 
 .po-money-note {
   font-size: 0.85rem;
-  color: var(--po-muted);
+  color: var(--ink-dim);
 }
 
 .po-money-fine {
   font-size: 0.9rem;
-  color: var(--po-muted);
+  color: var(--ink-dim);
   line-height: 1.6;
   max-width: 32rem;
   margin: 0 auto;
@@ -193,14 +116,15 @@
 }
 
 .po-trust li {
-  background: var(--po-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 1rem;
   padding: 1rem 1.25rem;
   display: flex;
   gap: 0.75rem;
   align-items: center;
   line-height: 1.5;
+  box-shadow: var(--card-shadow);
 }
 
 .po-cta-band {
