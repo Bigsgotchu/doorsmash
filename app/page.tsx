@@ -188,6 +188,9 @@ export default async function LandingPage() {
         </section>
 
         {/* ---------- how it works ---------- */}
+        <div className="po-ribbon-wrap" aria-hidden="true">
+          <div className="po-ribbon"><span /><span /><span /></div>
+        </div>
         <section id="how" className="po-lp-section">
           <div className="po-wrap">
             <div className="po-section-head">
@@ -420,6 +423,9 @@ export default async function LandingPage() {
         </section>
 
         {/* ---------- waitlist ---------- */}
+        <div className="po-ribbon-wrap" aria-hidden="true">
+          <div className="po-ribbon"><span /><span /><span /></div>
+        </div>
         <section id="waitlist" className="po-lp-section">
           <div className="po-wrap">
             <div className="po-waitlist-panel">

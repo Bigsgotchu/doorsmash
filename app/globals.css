@@ -2,12 +2,13 @@
 
 /* PlusOne design tokens — official brand spec (Oct 1, 2026).
    Three-pillar color scheme: hot pink #FF1493 leads (pink-forward gradients),
-   brilliant blue #0066FF, Electric Lime #39FF14. Purple is the bridge where
-   pink melts into blue — never separate pink/blue blocks (reads gender-coded).
-   Lime is a full brand color: eyebrows, icon chips, step accents, verification,
-   availability, success states, sparkle hits. Deep black #0A0A0F, white
-   #FFFFFF. Dark near-black by default; neutral light theme
-   via prefers-color-scheme. */
+   brilliant blue #0066FF, Electric Lime #39FF14. Lime is structural, not a
+   garnish: it anchors the signature neon ribbon motif (three solid glowing
+   bands — pink/lime/blue, echoing the concept board's neon ribbons), the
+   hero's triple-color atmosphere, eyebrows, step accents, and icon chips.
+   Purple remains the bridge where pink melts into blue — never separate
+   pink/blue blocks (reads gender-coded). Deep black #0A0A0F, white #FFFFFF. Dark near-black
+   by default; neutral light theme via prefers-color-scheme. */
 
 :root {
   --bg: #0a0a0f;
@@ -353,6 +354,38 @@ a {
   color: var(--ink);
   box-shadow: none;
   transform: translateY(-1px);
+}
+
+/* Signature neon ribbon: three solid bands of the tricolor, glowing.
+   Echoes the neon ribbons of the brand concept board. Never blended —
+   solid bands keep every color at full voltage. */
+.po-ribbon {
+  display: flex;
+  height: 6px;
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 999px;
+  overflow: visible;
+}
+.po-ribbon > span { flex: 1; }
+.po-ribbon > span:first-child {
+  background: var(--pink);
+  border-radius: 999px 0 0 999px;
+  box-shadow: 0 0 18px 2px rgba(255, 20, 147, 0.8);
+}
+.po-ribbon > span:nth-child(2) {
+  background: var(--lime);
+  box-shadow: 0 0 18px 2px rgba(57, 255, 20, 0.8);
+}
+.po-ribbon-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0;
+}
+.po-ribbon > span:last-child {
+  background: var(--blue);
+  border-radius: 0 999px 999px 0;
+  box-shadow: 0 0 18px 2px rgba(0, 102, 255, 0.8);
 }
 
 .po-btn-danger {
