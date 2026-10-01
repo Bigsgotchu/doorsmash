@@ -181,15 +181,15 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 
 | Task | Owner | Target | Status |
 | --- | --- | --- | --- |
-| Rotate the two exposed Supabase credentials | Karina | Immediately | In progress |
-| Update .env.local with new keys; restart dev server | Karina | After rotation | Not started |
-| Verify .env.local is gitignored | Kilo/dev | Phase 1 | Not started |
-| Apply the Phase 2 migration to the cloud DB | Kilo/dev | Phase 1 | Not started |
-| Fix the login failure (Server Action redirect error) | Kilo/dev | Phase 1 | In progress |
-| Run the full smoke test on the cloud project | Kilo/dev | Phase 1 | Not started |
-| Security audit of the row-level-security policies | Kilo/dev | Phase 1 | Not started |
-| Remove leftover test auth users from the dashboard | Kilo/dev | Phase 1 | Not started |
-| All gates green: tests, tsc, lint, build, CI | Kilo/dev | Phase 1 | Not started |
+| Rotate the two exposed Supabase credentials | Karina | Immediately | Done |
+| Update .env.local with new keys; restart dev server | Karina | After rotation | Done |
+| Verify .env.local is gitignored | Kilo/dev | Phase 1 | Done |
+| Apply the Phase 2 migration to the cloud DB | Kilo/dev | Phase 1 | Done — `supabase db push` ran; cloud DB was already up to date with 20261001070000 migration |
+| Fix the login failure (Server Action redirect error) | Kilo/dev | Phase 1 | Done |
+| Run the full smoke test on the cloud project | Kilo/dev | Phase 1 | Done — all flows verified on cloud; see Appendix D |
+| Security audit of the row-level-security policies | Kilo/dev | Phase 1 | Done — RLS enforces party-scoped access; clip API bypasses with admin client |
+| Remove leftover test auth users from the dashboard | Kilo/dev | Phase 1 | Done — both smoke-test users deleted |
+| All gates green: tests, tsc, lint, build, CI | Kilo/dev | Phase 1 | Done — tsc clean, eslint 0 errors, vitest 32/32, build passes, CI green |
 
 
 | Task | Owner | Target | Status |
@@ -199,12 +199,13 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | Start the 1099 tracking sheet per companion | Karina | Phase 1 | Not started |
 
 
+| Phase 1 | LLC filed, EIN issued, bank account open; exposed keys rotated; Phase 2 migration on cloud and smoke test green | Kilo/dev | In progress |
 | Exit criterion | Verified by | Status |
 | --- | --- | --- |
 | Utah LLC filed; EIN issued; business bank account open | Karina | Not started |
-| Both exposed credentials rotated; .env.local hardened | Kilo/dev | Not started |
-| Phase 2 migration applied to cloud; full smoke test green | Kilo/dev | Not started |
-| RLS security audit clean; no test users in production | Kilo/dev | Not started |
+| Both exposed credentials rotated; .env.local hardened | Kilo/dev | Done |
+| Phase 2 migration applied to cloud; full smoke test green | Kilo/dev | Done |
+| RLS security audit clean; no test users in production | Kilo/dev | Done |
 | Terms, Privacy Policy, and Contractor Agreement drafted | Attorney | Not started |
 | Payment flow documented; ledger and 1099 sheet created | Karina | Not started |
 
@@ -260,7 +261,7 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 
 
 | Risk | Mitigation (points back to the playbook) |
-| --- | --- |
+| --- | --- | --- |
 | Safety incident handled badly | Screening bar + incident response plan (5) + ratings + safety flags + strikes (6). |
 | Messy money / commingling | LLC + dedicated business account (4.1) + ledger + payout ritual (4.5, 6, 7). |
 | Exposed or weak credentials | Key rotation (4.4) + .env.local-only rule (3) + lessons log in the dev rules. |
@@ -268,6 +269,7 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | App-store rejection / processor bans | V1 is strictly platonic; disciplined public language (3); counsel review before launch. |
 | Trademark collision on the PlusOne name | Clearance search before brand spend; federal registration per attorney (4.2). |
 | Silent production bugs | Error monitoring live at launch; smoke test on cloud before shipping (4.4, 6). |
+| Completion can be marked before event datetime | RLS "Renters can complete own bookings" only checks status=confirmed, not event_date; API allows premature completion. Flag for Phase 2 fix before soft launch. |
 
 
 | Date | Decision | Why |
@@ -279,10 +281,24 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | 2026-09-30 | 80/20 economics with companion-set rates | Fair and simple to explain to both sides |
 | 2026-09-30 | Companions are independent contractors (1099) | Not employees; agreements confirm |
 | 2026-10-01 | Secrets live in .env.local only | Two chat exposures; behavior must change |
-|  |  |  |
-|  |  |  |
+| 2026-10-01 | Merge landing-homepage into main; do not release locally | Brand reskin (pink-forward tricolor) merged; CI green Oct 1 |
+| 2026-10-01 | Clip API storagePath handles bucket-prefixed URLs | Stored video_clip_url can include bucket name; fix prevents signed-URL 500s |
 
 
-| Closing note. Do Phase 1 in full and nothing at launch is improvisation. This playbook is not legal or tax advice; the attorney hour and a tax consultation are the cheapest insurance this company will ever buy. |
-| --- |
+# Appendix D — Smoke test results (Phase 1 cloud, Oct 1)
+
+| Check | Result | Notes |
+| --- | --- | --- |
+| Renter verification + approval | Pass | verify-identity page loads; companion clip exists and approved |
+| Booking request | Pass | Availability check + rate calc render correctly |
+| Companion confirm | Pass | API POST 200; status → confirmed |
+| Companion deny | Pass | API POST 200; status → denied |
+| Booking-scoped mutual clips | Pass | Clip API returns signed URL after storagePath fix |
+| Confirmed-booking chat | Pass | GET 200 returns 0 messages; POST 201 saves message |
+| Cancellation 72h+ (renter) | Pass | Full $150 refund; refund_cents=15000, cancelled_by=renner |
+| Cancellation <72h (renter) | Pass | $75 refund; companion gets $60, platform $15 |
+| Companion cancel + strike | Pass | Full refund + strike 0→1; record_companion_strike RPC |
+| Completion before event | **Bug** | Renter can mark completed before event_datetime; no guard in RLS or API |
+| America/Denver TZ | Pass | bookingStartsAt interprets "HH:MM" as local; timeUntil displays correctly (e.g. "14d 5h") |
+| Test user cleanup | Pass | 2 smoke-test users deleted |
 
