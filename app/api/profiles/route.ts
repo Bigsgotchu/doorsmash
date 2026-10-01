@@ -68,7 +68,7 @@ const updateSchema = z.object({
   distance_preference: z.number().min(1).max(100).optional(),
   gender: z.string().optional(),
   gender_preference: z.string().optional(),
-  primary_photo_url: z.string().url().optional(),
+  primary_photo_url: z.string().url().nullable().optional(),
   is_profile_complete: z.boolean().optional(),
 });
 
