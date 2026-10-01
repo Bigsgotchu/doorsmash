@@ -1,2 +1,0 @@
-[   31115ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://via.placeholder.com/400x600?text=Loading:0
-[   31955ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://doorsmash-wheat.vercel.app/api/matches:0
