@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import "@/app/admin/admin.css";
 
 export const metadata = {
-  title: "Admin Dashboard | DoorSmash",
+  title: "Admin Dashboard | PlusOne",
 };
 
 interface Report {

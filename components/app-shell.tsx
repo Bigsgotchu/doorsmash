@@ -614,9 +614,9 @@ export default function AppShell({
   return (
     <main className="app-shell">
       <aside className="sidebar">
-        <Link className="brand" href="/" aria-label="DoorSmash home">
-          <span className="brand-symbol" aria-hidden="true">d</span>
-          <span>door<span>smash</span></span>
+        <Link className="brand" href="/" aria-label="PlusOne home">
+          <span className="brand-symbol" aria-hidden="true">+</span>
+          <span>plus<span>one</span></span>
         </Link>
         <div className="sidebar-location">
           <span className="location-dot" />
@@ -664,9 +664,9 @@ export default function AppShell({
       </aside>
 
       <div className="mobile-header">
-        <Link className="brand" href="/" aria-label="DoorSmash home">
-          <span className="brand-symbol" aria-hidden="true">d</span>
-          <span>door<span>smash</span></span>
+        <Link className="brand" href="/" aria-label="PlusOne home">
+          <span className="brand-symbol" aria-hidden="true">+</span>
+          <span>plus<span>one</span></span>
         </Link>
         <button
           className="mobile-location"

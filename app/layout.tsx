@@ -15,9 +15,9 @@ const geistMono = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "DoorSmash | Meet someone. Make a plan.",
+  title: "PlusOne | Never go alone again.",
   description:
-    "Meet people nearby, find a date idea you both love, and make a plan.",
+    "Find a verified plus-one for any event — weddings, galas, concerts, and more. Never go alone again.",
 };
 
 interface RootLayoutProps {

@@ -4,7 +4,7 @@ import ProfileForm from "@/app/profile/_components/profile-form";
 import "@/app/profile/profile.css";
 
 export const metadata = {
-  title: "Set up your profile | DoorSmash",
+  title: "Set up your profile | PlusOne",
 };
 
 export default async function ProfilePage() {
