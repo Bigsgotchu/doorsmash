@@ -120,3 +120,54 @@ export const REPORT_REASONS = [
   "other",
 ] as const;
 export type ReportReason = (typeof REPORT_REASONS)[number];
+
+// ---------------------------------------------------------------
+// PlusOne marketplace
+// ---------------------------------------------------------------
+
+export type CompanionVerificationStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "suspended";
+
+export interface CompanionProfile {
+  id: string;
+  user_id: string;
+  bio?: string;
+  interests: string[];
+  hourly_rate?: number | null;
+  evening_rate?: number | null;
+  verification_status: CompanionVerificationStatus;
+  verified_at?: string | null;
+  rating_avg: number;
+  total_bookings: number;
+  created_at: string;
+}
+
+export type AvailabilityStatus = "open" | "booked" | "blocked";
+
+export interface AvailabilitySlot {
+  id: string;
+  companion_id: string;
+  date: string;
+  start_time?: string | null;
+  end_time?: string | null;
+  status: AvailabilityStatus;
+  created_at: string;
+}
+
+export type VerificationSubmissionStatus = "pending" | "approved" | "rejected";
+
+export interface VerificationSubmission {
+  id: string;
+  user_id: string;
+  id_document_url?: string | null;
+  selfie_url?: string | null;
+  video_clip_url?: string | null;
+  prompt_phrase?: string | null;
+  status: VerificationSubmissionStatus;
+  reviewer_notes?: string | null;
+  reviewed_at?: string | null;
+  created_at: string;
+}
