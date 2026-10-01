@@ -22,9 +22,8 @@ export async function GET(request: Request) {
       id,
       user_a,
       user_b,
-      created_at,
-      profiles!inner(*)
-    `,
+      created_at
+      `,
       { count: "exact" },
     )
     .or(`user_a.eq.${user.id},user_b.eq.${user.id}`)
