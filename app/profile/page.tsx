@@ -27,14 +27,13 @@ export default async function ProfilePage() {
     <main className="profile-setup-shell">
       <div className="profile-setup-card">
         <div className="profile-setup-brand">
-          <span className="brand-symbol" aria-hidden="true">d</span>
-          <span>door<span>smash</span></span>
+          <span className="po-home-plus" aria-hidden="true">+</span> plusone
         </div>
         <h1>{profile?.is_profile_complete ? "Edit profile" : "Make it you."}</h1>
         <p className="profile-setup-sub">
           {profile?.is_profile_complete
             ? "Update your details, photos, and preferences."
-            : "Add a few photos and the little details that make a first date feel easy."}
+            : "Add a few photos and the little details that make a great first impression."}
         </p>
 
         <ProfileForm profile={profile} />

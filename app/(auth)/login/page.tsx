@@ -20,10 +20,9 @@ export default function LoginPage() {
     <main className="auth-shell">
       <div className="auth-card">
         <div className="auth-brand">
-          <span className="brand-symbol" aria-hidden="true">d</span>
-          <span>door<span>smash</span></span>
+          <span className="po-home-plus" aria-hidden="true">+</span> plusone
         </div>
-        <h1>Meet someone. Make a plan.</h1>
+        <h1>Welcome back.</h1>
 
           <div className="auth-tabs">
             <button

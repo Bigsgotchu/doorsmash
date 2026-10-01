@@ -29,22 +29,17 @@
   text-decoration: none;
 }
 
-.profile-setup-brand .brand-symbol {
+.profile-setup-brand .po-home-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 31px;
   height: 31px;
-  display: grid;
-  place-items: center;
-  background: var(--green-bright);
-  border-radius: 50% 50% 4px 50%;
-  font-family: Georgia, serif;
-  font-size: 23px;
-  font-style: italic;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff2d78, #8b3dff);
+  font-size: 1.25rem;
+  font-weight: 800;
   line-height: 1;
-}
-
-.profile-setup-brand span span {
-  color: var(--green);
-  font-weight: 450;
 }
 
 .profile-setup-card h1 {

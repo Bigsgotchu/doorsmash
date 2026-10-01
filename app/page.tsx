@@ -71,7 +71,7 @@ const STEPS = [
   },
   {
     n: "2",
-    title: "Request your date",
+    title: "Request your plus-one",
     text: "Send a booking request with your event details. One clear price, shown up front — no surprises.",
   },
   {
