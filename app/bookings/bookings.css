@@ -1,0 +1,409 @@
+/* PlusOne Phase 2: browse, booking, and booking-detail styles.
+   Extends the base .po-* classes from become-companion.css. */
+
+.po-wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.po-hint {
+  color: #8a4a68;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.po-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e6b34;
+}
+
+.po-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.po-card {
+  background: #fff;
+  border: 1px solid #f3d1e3;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(255, 45, 120, 0.08);
+}
+
+.po-card-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: linear-gradient(135deg, #ffd6e8, #e3c8ff);
+}
+
+.po-card-photo-fallback {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ffd6e8, #e3c8ff);
+}
+
+.po-card-body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.po-card-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.po-card-rates {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #6b2d4d;
+}
+
+.po-card-rates strong {
+  color: #1c1030;
+}
+
+.po-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0.25rem;
+}
+
+.po-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.po-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a4a68;
+}
+
+.po-input,
+.po-select,
+.po-textarea {
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid #eec3d9;
+  border-radius: 0.65rem;
+  background: #fff;
+  color: #1c1030;
+  width: 100%;
+}
+
+.po-input:focus,
+.po-select:focus,
+.po-textarea:focus {
+  outline: 2px solid #ff2d78;
+  outline-offset: 1px;
+  border-color: #ff2d78;
+}
+
+.po-textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.po-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.25rem;
+}
+
+.po-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .po-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.po-radio-cards {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.po-radio-card {
+  border: 1.5px solid #eec3d9;
+  border-radius: 0.75rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+}
+
+.po-radio-card:has(input:checked) {
+  border-color: #ff2d78;
+  background: #fff0f6;
+  box-shadow: 0 0 0 1px #ff2d78;
+}
+
+.po-price-box {
+  background: #fff7fb;
+  border: 1.5px dashed #f0a8c8;
+  border-radius: 0.9rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.po-price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.po-price-total {
+  font-weight: 800;
+  font-size: 1.15rem;
+  border-top: 1px solid #f3d1e3;
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.po-error {
+  background: #fdeef3;
+  border: 1px solid #f5a8c4;
+  color: #a11a4e;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+}
+
+.po-success {
+  background: #effaf1;
+  border: 1px solid #a8d9b5;
+  color: #1e6b34;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+}
+
+.po-status {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+.po-status-requested { background: #fff3d6; color: #8a5a00; }
+.po-status-confirmed { background: #e3f7e9; color: #1e6b34; }
+.po-status-denied { background: #fdeef3; color: #a11a4e; }
+.po-status-cancelled_by_renter,
+.po-status-cancelled_by_companion { background: #eee; color: #555; }
+.po-status-completed { background: #e8e4fb; color: #4a3aa8; }
+
+.po-booking-card {
+  background: #fff;
+  border: 1px solid #f3d1e3;
+  border-radius: 1rem;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.po-booking-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.po-booking-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.po-booking-meta {
+  color: #6b2d4d;
+  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.po-btn {
+  font: inherit;
+  font-weight: 700;
+  padding: 0.65rem 1.2rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #ff2d78;
+  background: #ff2d78;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.po-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.po-btn-secondary {
+  background: #fff;
+  color: #c2185b;
+}
+
+.po-btn-danger {
+  background: #fff;
+  color: #a11a4e;
+  border-color: #f5a8c4;
+}
+
+.po-btn-row {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.po-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 1.5rem;
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 560px) {
+  .po-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.po-detail-item dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a4a68;
+}
+
+.po-detail-item dd {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+}
+
+.po-chat {
+  border: 1.5px solid #f3d1e3;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-top: 1rem;
+  background: #fff;
+}
+
+.po-chat-log {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: #fffbfd;
+}
+
+.po-msg {
+  max-width: 80%;
+  padding: 0.55rem 0.85rem;
+  border-radius: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.po-msg-them {
+  background: #f6e9f0;
+  align-self: flex-start;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.po-msg-mine {
+  background: #ff2d78;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.po-msg-time {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+.po-chat-form {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  border-top: 1px solid #f3d1e3;
+}
+
+.po-clip {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 0.9rem;
+  margin-top: 0.6rem;
+  background: #1c1030;
+}
+
+.po-section-card {
+  background: #fff;
+  border: 1px solid #f3d1e3;
+  border-radius: 1rem;
+  padding: 1.2rem 1.3rem;
+  margin-top: 1.25rem;
+}
+
+.po-section-card h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+}
+
+.po-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #8a4a68;
+}
+
+.po-empty p {
+  margin: 0.4rem 0 1.2rem;
+}

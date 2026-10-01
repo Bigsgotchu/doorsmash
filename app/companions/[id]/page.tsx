@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { formatUSD } from "@/lib/plusone/rates";
 import type { AvailabilitySlot } from "@/lib/types";
@@ -144,11 +145,12 @@ export default async function CompanionPage({ params }: PageProps) {
         </section>
 
         <div className="po-companion-cta">
-          <button type="button" className="po-cta" disabled>
-            Request to book — opening soon
-          </button>
+          <Link href={`/book/new?companion=${companion.id}`} className="po-cta">
+            Request to book
+          </Link>
           <p className="po-fine">
-            Booking requests arrive with PlusOne Phase 2.
+            Free to browse. Requesting a booking requires verified identity —
+            both sides stay safe.
           </p>
         </div>
       </div>
