@@ -183,13 +183,13 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | --- | --- | --- | --- |
 | Rotate the two exposed Supabase credentials | Karina | Immediately | In progress |
 | Update .env.local with new keys; restart dev server | Karina | After rotation | Not started |
-| Verify .env.local is gitignored | Kilo/dev | Phase 1 | Done |
-| Apply the Phase 2 migration to the cloud DB | Kilo/dev | Phase 1 | Done |
-| Fix the login failure (Server Action redirect error) | Kilo/dev | Phase 1 | Done |
-| Run the full smoke test on the cloud project | Kilo/dev | Phase 1 | In progress |
-| Security audit of the row-level-security policies | Kilo/dev | Phase 1 | In progress |
+| Verify .env.local is gitignored | Kilo/dev | Phase 1 | Not started |
+| Apply the Phase 2 migration to the cloud DB | Kilo/dev | Phase 1 | Not started |
+| Fix the login failure (Server Action redirect error) | Kilo/dev | Phase 1 | In progress |
+| Run the full smoke test on the cloud project | Kilo/dev | Phase 1 | Not started |
+| Security audit of the row-level-security policies | Kilo/dev | Phase 1 | Not started |
 | Remove leftover test auth users from the dashboard | Kilo/dev | Phase 1 | Not started |
-| All gates green: tests, tsc, lint, build, CI | Kilo/dev | Phase 1 | Done |
+| All gates green: tests, tsc, lint, build, CI | Kilo/dev | Phase 1 | Not started |
 
 
 | Task | Owner | Target | Status |
@@ -279,8 +279,6 @@ Every important choice, dated, with its reason. Append new rows as choices are m
 | 2026-09-30 | 80/20 economics with companion-set rates | Fair and simple to explain to both sides |
 | 2026-09-30 | Companions are independent contractors (1099) | Not employees; agreements confirm |
 | 2026-10-01 | Secrets live in .env.local only | Two chat exposures; behavior must change |
-| 2026-10-01 | Clip API: use service-role client for cross-user verification_submissions read | RLS only lets users see their own submissions; the booking-party check in the route authorizes the access |
-| 2026-10-01 | bookingStartsAt normalizes HH:MM:SS DB times | Postgres time columns return HH:MM:SS; appending ":00" made invalid ISO 8601 causing NaN in display |
 |  |  |  |
 |  |  |  |
 
