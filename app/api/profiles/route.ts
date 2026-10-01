@@ -36,8 +36,11 @@ export async function GET(request: Request) {
     .from("profiles")
     .select("*")
     .neq("id", user.id)
-    .not("id", "in", `(${blockedIds.join(",") || "null"})`)
     .eq("is_profile_complete", true);
+
+  if (blockedIds.length > 0) {
+    query = query.not("id", "in", `(${blockedIds.join(",")})`);
+  }
 
   // Exclude profiles the user has already swiped on
   const { data: swipes } = await supabase

@@ -1,0 +1,96 @@
+/* Verification review queue — extends the admin shell. */
+
+.verify-card {
+  max-width: 100%;
+}
+
+.verify-phrase {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.verify-media {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .verify-media {
+    grid-template-columns: 1fr 1fr;
+  }
+  .verify-clip {
+    grid-column: 1 / -1;
+  }
+}
+
+.verify-media-item {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.verify-thumb {
+  max-width: 220px;
+  max-height: 220px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.verify-video {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 6px;
+  background: #000;
+}
+
+.verify-doc-link {
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.verify-missing {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.verify-form {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.verify-notes {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.verify-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.verify-approve {
+  background: #166534;
+  border-color: #166534;
+}
+
+.verify-approve:hover {
+  background: #14532d;
+}
+
+.verify-reject {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.verify-reject:hover {
+  background: #991b1b;
+}
