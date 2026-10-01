@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f8f7f1;
-  --paper-deep: #efeee5;
-  --ink: #20231f;
-  --muted: #777a70;
-  --line: #e4e3d9;
-  --green: #234e3d;
-  --green-bright: #d6f05f;
-  --coral: #ef7659;
-  --white: #fffefa;
+  /* DoorSmash brand colors */
+  --hot-pink: #FF1493;
+  --electric-blue: #2563FF;
+  --deep-navy: #090B1A;
+  --soft-pink: #FFF0F7;
+  --ice-blue: #EEF4FF;
+  --white: #FFFFFF;
+
+  /* Mapped palette for existing variable references */
+  --paper: var(--deep-navy);
+  --paper-deep: #1a1c33;
+  --ink: var(--white);
+  --muted: #b8bacb;
+  --line: #2a2d4a;
+  --green: var(--electric-blue);
+  --green-bright: var(--hot-pink);
+  --coral: var(--hot-pink);
+  --white-surface: var(--white);
 }
 
 @theme inline {
@@ -58,8 +67,8 @@ summary:focus-visible {
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
   background-color: var(--paper);
-  background-image: radial-gradient(#d7d8cc 0.55px, transparent 0.55px);
-  background-size: 7px 7px;
+  background-image: radial-gradient(var(--electric-blue) 0.55px, transparent 0.55px);
+  background-size: 14px 14px;
 }
 
 .sidebar {
@@ -69,7 +78,7 @@ summary:focus-visible {
   display: flex;
   flex-direction: column;
   padding: 28px 18px 18px;
-  background: var(--white);
+  background: #0f1125;
   border-right: 1px solid var(--line);
   z-index: 5;
 }
@@ -166,13 +175,13 @@ summary:focus-visible {
 }
 
 .nav-link:hover {
-  background: #f2f3e9;
-  color: var(--ink);
+  background: rgba(255, 20, 147, 0.1);
+  color: var(--hot-pink);
 }
 
 .nav-link.is-active {
-  background: #eff1e6;
-  color: var(--green);
+  background: rgba(255, 20, 147, 0.15);
+  color: var(--hot-pink);
   font-weight: 650;
 }
 
@@ -417,9 +426,9 @@ h1 em,
   overflow: hidden;
   max-width: 620px;
   border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--white);
-  box-shadow: 0 12px 36px rgb(33 42 31 / 8%);
+  border-radius: 8px;
+  background: var(--white-surface);
+  box-shadow: 0 12px 36px rgb(255 20 147 / 10%);
 }
 
 .profile-photo {
@@ -620,8 +629,8 @@ h1 em,
   width: 43px;
   flex: none;
   border: 1px solid var(--line);
-  background: var(--white);
-  color: #767a70;
+  background: var(--ice-blue);
+  color: var(--electric-blue);
   font-size: 24px;
   font-weight: 300;
 }
@@ -629,26 +638,26 @@ h1 em,
 .smash-button {
   min-width: 127px;
   padding: 0 17px;
-  border: 1px solid var(--green);
-  background: var(--green);
+  border: 1px solid var(--hot-pink);
+  background: var(--hot-pink);
   color: white;
   font-size: 12px;
 }
 
 .smash-button > span:first-child {
-  color: var(--green-bright);
+  color: var(--electric-blue);
 }
 
 .smash-button:hover {
-  background: #173d2d;
-  box-shadow: 0 5px 14px rgb(35 78 61 / 19%);
+  background: #d6007a;
+  box-shadow: 0 5px 14px rgb(255 20 147 / 25%);
 }
 
 .wave-button {
   padding: 0 12px;
-  border: 1px solid #d8ded0;
-  background: #f3f5eb;
-  color: var(--green);
+  border: 1px solid var(--line);
+  background: var(--ice-blue);
+  color: var(--electric-blue);
   font-size: 10px;
 }
 
@@ -1018,7 +1027,7 @@ h1 em,
   place-items: center;
   overflow-y: auto;
   padding: 24px;
-  background: rgb(27 33 27 / 57%);
+   background: rgba(9, 11, 26, 0.85);
   backdrop-filter: blur(4px);
   animation: fade-in 180ms both;
 }
@@ -1057,7 +1066,7 @@ h1 em,
 
 .match-confetti {
   margin: 0 auto 9px;
-  color: var(--coral);
+  color: var(--hot-pink);
   font-size: 28px;
   animation: turn 6s linear infinite;
 }
@@ -1188,8 +1197,8 @@ h1 em,
   margin: 0;
   padding: 10px 12px;
   border-radius: 3px 10px 10px 10px;
-  background: white;
-  color: var(--ink);
+  background: var(--ice-blue);
+  color: var(--deep-navy);
   font-size: 11px;
   line-height: 1.5;
 }
@@ -1197,7 +1206,7 @@ h1 em,
 .chat-bubble.sent {
   align-self: flex-end;
   border-radius: 10px 3px 10px 10px;
-  background: var(--green);
+  background: var(--hot-pink);
   color: white;
 }
 
@@ -1270,7 +1279,7 @@ h1 em,
   padding: 0 12px;
   border: 0;
   border-radius: 3px;
-  background: var(--green);
+  background: var(--hot-pink);
   color: white;
   font-size: 10px;
   font-weight: 650;
@@ -1359,8 +1368,8 @@ h1 em,
   padding: 13px 17px;
   border: 1px solid rgb(255 255 255 / 17%);
   border-radius: 3px;
-  background: var(--green);
-  box-shadow: 0 8px 28px rgb(27 49 34 / 22%);
+  background: var(--hot-pink);
+  box-shadow: 0 8px 28px rgb(255 20 147 / 22%);
   color: white;
   font-size: 11px;
   animation: toast-in 220ms both;
