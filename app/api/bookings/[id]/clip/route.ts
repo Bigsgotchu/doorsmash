@@ -69,7 +69,7 @@ export async function GET(
     return NextResponse.json({ error: "No verification clip on file." }, { status: 404 });
   }
 
-  const { data: signed, error } = await supabase.storage
+  const { data: signed, error } = await admin.storage
     .from("verification-clips")
     .createSignedUrl(storagePath(submission.video_clip_url as string), 300);
 
