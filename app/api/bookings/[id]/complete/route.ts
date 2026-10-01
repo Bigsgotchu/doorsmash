@@ -4,6 +4,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getBookingAsParty } from "@/lib/plusone/booking-server";
+import { eventHasStarted } from "@/lib/plusone/booking";
 
 export async function POST(
   _request: Request,
@@ -23,6 +24,17 @@ export async function POST(
   if (party.booking.status !== "confirmed") {
     return NextResponse.json(
       { error: `This booking is ${party.booking.status}.` },
+      { status: 400 },
+    );
+  }
+  // A booking can only be completed once its event has started
+  // (America/Denver wall time). RLS enforces the same rule; this
+  // returns a clean 400 instead of an RLS violation.
+  if (
+    !eventHasStarted(party.booking.event_date, party.booking.start_time)
+  ) {
+    return NextResponse.json(
+      { error: "This event hasn't started yet." },
       { status: 400 },
     );
   }
