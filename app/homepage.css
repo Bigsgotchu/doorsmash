@@ -71,8 +71,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--pink);
-  box-shadow: 0 0 12px 2px var(--pink);
+  background: var(--lime);
+  box-shadow: 0 0 12px 2px var(--lime);
   animation: po-pulse 2.2s ease-in-out infinite;
 }
 
@@ -245,6 +245,10 @@
   opacity: 0.9;
 }
 
+/* Three steps, three brand colors. */
+.po-step-num--b { color: var(--lime); }
+.po-step-num--c { color: var(--blue); }
+
 .po-step-card h3 {
   font-family: var(--font-display), "Archivo Black", sans-serif;
   font-size: 1.35rem;
@@ -345,6 +349,16 @@
   background: var(--pink-14);
   color: var(--pink-soft);
   margin-bottom: 0.8rem;
+}
+
+/* Tricolor rhythm across the four feature cards. */
+.po-mini-cards .po-mini-card:nth-child(2) .po-mini-icon {
+  background: var(--lime-14);
+  color: var(--lime);
+}
+.po-mini-cards .po-mini-card:nth-child(3) .po-mini-icon {
+  background: var(--blue-14);
+  color: var(--blue);
 }
 
 .po-mini-card .po-mini-icon svg {

@@ -208,7 +208,7 @@ export default async function LandingPage() {
                 </p>
               </article>
               <article className="po-card po-step-card">
-                <div className="po-step-num" aria-hidden="true">02</div>
+                <div className="po-step-num po-step-num--b" aria-hidden="true">02</div>
                 <h3>Send your request</h3>
                 <p>
                   Tell them the plan: the occasion, date, time, venue, dress
@@ -217,7 +217,7 @@ export default async function LandingPage() {
                 </p>
               </article>
               <article className="po-card po-step-card">
-                <div className="po-step-num" aria-hidden="true">03</div>
+                <div className="po-step-num po-step-num--c" aria-hidden="true">03</div>
                 <h3>Confirm &amp; enjoy your night</h3>
                 <p>
                   You both watch each other&rsquo;s verification clip first.

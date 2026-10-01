@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 /* PlusOne design tokens — official brand spec (Oct 1, 2026).
-   Hot pink #FF1493 (leads, pink-forward gradients), brilliant blue #0066FF,
-   deep black #0A0A0F, white #FFFFFF; purple is the bridge where pink melts
-   into blue — never separate pink/blue blocks (reads gender-coded).
-   Electric Lime #39FF14 is the sparing accent: verification, availability,
-   success, sparkle hits. Dark near-black by default; neutral light theme
+   Three-pillar color scheme: hot pink #FF1493 leads (pink-forward gradients),
+   brilliant blue #0066FF, Electric Lime #39FF14. Purple is the bridge where
+   pink melts into blue — never separate pink/blue blocks (reads gender-coded).
+   Lime is a full brand color: eyebrows, icon chips, step accents, verification,
+   availability, success states, sparkle hits. Deep black #0A0A0F, white
+   #FFFFFF. Dark near-black by default; neutral light theme
    via prefers-color-scheme. */
 
 :root {
@@ -34,6 +35,9 @@
   --brand-gradient: linear-gradient(135deg, #ff1493, #f41d9d 45%, #8b2ff7 72%, #0066ff);
   --lime: #39ff14;
   --lime-dim: rgba(57, 255, 20, 0.12);
+  --pink-14: rgba(255, 20, 147, 0.14);
+  --lime-14: rgba(57, 255, 20, 0.14);
+  --blue-14: rgba(0, 102, 255, 0.14);
   --red: #f87171;
   --red-dim: rgba(248, 113, 113, 0.12);
 }
@@ -231,7 +235,7 @@ a {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pink-soft);
+  color: var(--lime);
   margin: 0 0 1rem;
 }
 
